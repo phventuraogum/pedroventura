@@ -1,140 +1,144 @@
-import { motion } from "framer-motion";
-import { Linkedin, Mail, MessageCircle } from "lucide-react";
-import { PageTransition } from "@/components/layout/PageTransition";
+import { FormEvent, useState } from "react";
+import { Linkedin, Mail, MessageCircle, ArrowUpRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
+
+/* Contatos ofuscados — montados só no clique (nada de e-mail/telefone no DOM) */
+const emailAddr = () => ["passisventura", "gmail.com"].join("@");
+const waNumber = () => ["55", "32", "99953", "0416"].join("");
 
 const Contato = () => {
   const { t } = useTranslation();
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
 
   const contactLinks = [
     {
-      icon: Linkedin,
-      label: t("contact.linkedin.label"),
-      href: "https://www.linkedin.com/in/phventura/",
-      description: t("contact.linkedin.description"),
-    },
-    {
       icon: Mail,
-      label: t("contact.email.label"),
-      href: "mailto:passisventura@gmail.com",
-      description: t("contact.email.description"),
+      label: t("contact.email.label", "E-mail"),
+      description: "resposta em até 1 dia útil",
+      action: () => {
+        window.location.href = `mailto:${emailAddr()}`;
+      },
     },
     {
       icon: MessageCircle,
-      label: t("contact.whatsapp.label"),
-      href: "https://wa.me/5532999530416",
-      description: t("contact.whatsapp.description"),
+      label: t("contact.whatsapp.label", "WhatsApp"),
+      description: "canal mais rápido",
+      action: () => {
+        window.open(`https://wa.me/${waNumber()}`, "_blank", "noopener,noreferrer");
+      },
+    },
+    {
+      icon: Linkedin,
+      label: t("contact.linkedin.label", "LinkedIn"),
+      description: "rede profissional",
+      action: () => {
+        window.open("https://www.linkedin.com/in/phventura/", "_blank", "noopener,noreferrer");
+      },
     },
   ];
 
-  return (
-    <PageTransition>
-      <main className="pt-10 lg:pt-16">
-        <section className="container max-w-4xl px-6 py-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <h1 className="section-title mb-4">{t("contact.title")}</h1>
-            <p className="section-subtitle mx-auto">
-              {t("contact.subtitle")}
-            </p>
-          </motion.div>
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(
+      name ? `Contato via portfólio — ${name}` : "Contato via portfólio"
+    );
+    const body = encodeURIComponent(message);
+    window.location.href = `mailto:${emailAddr()}?subject=${subject}&body=${body}`;
+  };
 
-          <div className="grid sm:grid-cols-3 gap-6 mb-16">
-            {contactLinks.map((link, i) => (
-              <motion.a
+  return (
+    <main className="container-page py-16 md:py-20">
+      <div className="grid gap-12 md:grid-cols-[1.1fr_1fr] md:gap-16">
+        {/* Esquerda: contexto + links */}
+        <div className="animate-in-up">
+          <span className="badge-available">Disponível para projetos</span>
+          <h1 className="section-title mt-6">
+            {t("contact.title", "Vamos conversar")}
+          </h1>
+          <p className="section-subtitle mt-4">
+            {t(
+              "contact.subtitle",
+              "Aberto a projetos de integração, dados, automação e IA — do discovery à operação."
+            )}
+          </p>
+
+          <div className="mt-10 divide-y divide-border border-y border-border">
+            {contactLinks.map((link) => (
+              <button
                 key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="card-premium text-center group"
+                type="button"
+                onClick={link.action}
+                className="group flex w-full items-center gap-4 py-4 text-left"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                  <link.icon size={24} className="text-primary" />
-                </div>
-                <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">
-                  {link.label}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {link.description}
-                </p>
-              </motion.a>
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border bg-surface-2 text-secondary transition-colors group-hover:text-foreground">
+                  <link.icon size={17} />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-medium">{link.label}</span>
+                  <span className="block font-mono-jb text-xs text-muted">
+                    {link.description}
+                  </span>
+                </span>
+                <span className="btn-ghost pointer-events-none shrink-0 !px-3 !py-1.5 text-xs">
+                  Abrir <ArrowUpRight size={13} />
+                </span>
+              </button>
             ))}
           </div>
+        </div>
 
-          {/* Simple form */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="card-premium max-w-xl mx-auto"
-          >
-            <h2 className="text-lg font-semibold mb-6">{t("contact.form.title")}</h2>
-            <form className="space-y-4">
+        {/* Direita: form (abre e-mail preenchido) */}
+        <div className="animate-in-up" style={{ animationDelay: "0.1s" }}>
+          <form onSubmit={handleSubmit} className="card-base">
+            <h2 className="text-lg font-semibold">
+              {t("contact.form.title", "Mandar uma mensagem")}
+            </h2>
+            <p className="mt-1 text-xs text-muted">
+              Abre no seu e-mail, já preenchido.
+            </p>
+
+            <div className="mt-6 space-y-4">
               <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium mb-2"
-                >
-                  {t("contact.form.name")}
+                <label htmlFor="name" className="mb-1.5 block text-sm font-medium">
+                  {t("contact.form.name", "Nome")}
                 </label>
                 <input
                   type="text"
                   id="name"
                   name="name"
-                  className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                  placeholder={t("contact.form.namePlaceholder")}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="h-10 w-full rounded-md border border-border bg-surface-1 px-3 text-sm outline-none transition-colors placeholder:text-muted focus:border-brand"
+                  placeholder={t("contact.form.namePlaceholder", "Seu nome")}
                 />
               </div>
               <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium mb-2"
-                >
-                  {t("contact.form.email")}
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                  placeholder={t("contact.form.emailPlaceholder")}
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium mb-2"
-                >
-                  {t("contact.form.message")}
+                <label htmlFor="message" className="mb-1.5 block text-sm font-medium">
+                  {t("contact.form.message", "Mensagem")}
                 </label>
                 <textarea
                   id="message"
                   name="message"
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
-                  placeholder={t("contact.form.messagePlaceholder")}
+                  rows={5}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className="w-full resize-none rounded-md border border-border bg-surface-1 px-3 py-2.5 text-sm outline-none transition-colors placeholder:text-muted focus:border-brand"
+                  placeholder={t(
+                    "contact.form.messagePlaceholder",
+                    "Me conta o que você quer construir…"
+                  )}
                 />
               </div>
-              <button
-                type="submit"
-                className="w-full py-3 px-6 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
-              >
-                {t("contact.form.submit")}
+              <button type="submit" className="btn-primary w-full">
+                {t("contact.form.submit", "Enviar")}
               </button>
-            </form>
-          </motion.div>
-        </section>
-      </main>
-    </PageTransition>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
   );
 };
 
 export default Contato;
-

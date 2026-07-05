@@ -1,12 +1,8 @@
 import { useState, useMemo, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Search, X } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
-import { PageTransition } from "@/components/layout/PageTransition";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projects, focusFilters } from "@/data/projects";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
 
 const Projetos = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -33,140 +29,87 @@ const Projetos = () => {
         project.tags.some((t) => t.toLowerCase().includes(searchLower));
 
       const matchesFocus =
-        !activeFilter ||
-        activeFilter.tags.some((t) => project.tags.includes(t));
+        !activeFilter || activeFilter.tags.some((t) => project.tags.includes(t));
 
       return matchesSearch && matchesFocus;
     });
   }, [search, activeFilter]);
 
   return (
-    <PageTransition>
-      <main className="container max-w-6xl px-6 pt-10 pb-24 lg:pt-16">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-12"
-        >
-          <p className="section-label mb-3">Projetos</p>
-          <h1 className="section-title mb-3">Case studies</h1>
-          <p className="section-subtitle">
-            Integrações, pipelines de dados, automações e sistemas que funcionam em produção.
-          </p>
-        </motion.div>
+    <main className="container-page py-16 md:py-20">
+      {/* Header */}
+      <header className="animate-in-up">
+        <span className="section-label">// trabalhos</span>
+        <h1 className="section-title mt-4">Projetos entregues</h1>
+        <p className="section-subtitle mt-4">
+          {projects.length} sistemas que rodaram ou rodam em produção. Nomes de
+          clientes ficam de fora por contrato; as decisões técnicas, não.
+        </p>
+      </header>
 
-        {/* Filtros de foco */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="mb-6"
-        >
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3"
-            style={{ color: "hsl(var(--muted-foreground))" }}>
-            Filtrar por foco
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {focusFilters.map((f) => (
+      {/* Filtros + busca */}
+      <div className="mt-10 flex flex-col gap-4 border-y border-border py-5 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-wrap items-center gap-2">
+          {focusFilters.map((f) => {
+            const active = activeFocus === f.id;
+            return (
               <button
                 key={f.id}
-                onClick={() => setActiveFocus(activeFocus === f.id ? null : f.id)}
-                className={cn(
-                  "rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200",
-                  activeFocus === f.id
-                    ? "text-primary-foreground"
-                    : "border hover:border-primary/30 hover:text-foreground"
-                )}
-                style={
-                  activeFocus === f.id
-                    ? { background: "hsl(var(--primary))", border: "1px solid transparent" }
-                    : {
-                        background: "hsl(244 14% 11%)",
-                        color: "hsl(var(--muted-foreground))",
-                        borderColor: "hsl(var(--border))",
-                      }
-                }
+                onClick={() => setActiveFocus(active ? null : f.id)}
+                className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
+                  active
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-surface-2 text-secondary hover:text-foreground"
+                }`}
               >
                 {f.label}
               </button>
-            ))}
-            {activeFocus && (
-              <button
-                onClick={() => setActiveFocus(null)}
-                className="rounded-full px-3 py-1.5 text-xs font-medium flex items-center gap-1.5
-                  transition-colors duration-200"
-                style={{ color: "hsl(var(--muted-foreground))" }}
-              >
-                <X size={12} /> Limpar
-              </button>
-            )}
-          </div>
-        </motion.div>
-
-        {/* Busca */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.15 }}
-          className="mb-10 max-w-xl"
-        >
-          <div className="relative">
-            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2"
-              style={{ color: "hsl(var(--muted-foreground))" }} />
-            <Input
-              type="text"
-              placeholder="Buscar por título, organização ou tecnologia..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="pl-9 h-11 rounded-xl text-sm"
-              style={{
-                background: "hsl(244 14% 8%)",
-                borderColor: "hsl(var(--border))"
-              }}
-            />
-            {search && (
-              <button
-                onClick={() => setSearch("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 hover:text-foreground transition-colors"
-                style={{ color: "hsl(var(--muted-foreground))" }}
-              >
-                <X size={14} />
-              </button>
-            )}
-          </div>
-        </motion.div>
-
-        {/* Grid de projetos */}
-        <AnimatePresence mode="wait">
-          {filteredProjects.length > 0 ? (
-            <motion.div
-              key="grid"
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 items-stretch"
+            );
+          })}
+          {activeFocus && (
+            <button
+              onClick={() => setActiveFocus(null)}
+              className="inline-flex items-center gap-1 px-2 py-1.5 text-xs text-muted transition-colors hover:text-foreground"
             >
-              {filteredProjects.map((project, i) => (
-                <motion.div key={project.slug}
-                  initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.06 }}
-                  className="h-full">
-                  <ProjectCard project={project} index={i} />
-                </motion.div>
-              ))}
-            </motion.div>
-          ) : (
-            <motion.div
-              key="empty"
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="text-center py-24"
-            >
-              <p className="text-lg font-medium text-foreground/60">Nenhum projeto encontrado</p>
-              <p className="text-sm mt-2" style={{ color: "hsl(var(--muted-foreground))" }}>
-                Tente outros filtros ou limpe a busca
-              </p>
-            </motion.div>
+              <X size={12} /> limpar
+            </button>
           )}
-        </AnimatePresence>
-      </main>
-    </PageTransition>
+        </div>
+
+        <div className="relative w-full md:w-72">
+          <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
+          <input
+            type="text"
+            placeholder="Buscar projeto ou tecnologia…"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="h-9 w-full rounded-md border border-border bg-surface-1 pl-9 pr-8 text-sm outline-none transition-colors placeholder:text-muted focus:border-brand"
+          />
+          {search && (
+            <button
+              onClick={() => setSearch("")}
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted transition-colors hover:text-foreground"
+            >
+              <X size={14} />
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Grid */}
+      {filteredProjects.length > 0 ? (
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredProjects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
+        </div>
+      ) : (
+        <div className="py-24 text-center">
+          <p className="text-lg font-medium">Nenhum projeto encontrado</p>
+          <p className="mt-2 text-sm text-muted">Tente outros filtros ou limpe a busca.</p>
+        </div>
+      )}
+    </main>
   );
 };
 

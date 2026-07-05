@@ -1,458 +1,260 @@
 import { useParams, Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
-import { ArrowLeft, ArrowRight, Shield, Lightbulb, ShieldCheck, Activity, Wrench, Plug, TrendingUp } from "lucide-react";
-import { PageTransition } from "@/components/layout/PageTransition";
-import { ArchitectureFlow } from "@/components/ArchitectureFlow";
+import { ArrowLeft, ArrowUpRight, ChevronRight } from "lucide-react";
 import { projects } from "@/data/projects";
-import { Button } from "@/components/ui/button";
+import { explainProjectStack } from "@/data/techRationale";
+import type { ReactNode } from "react";
+
+function Section({
+  label,
+  title,
+  children,
+}: {
+  label?: string;
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className="border-t border-border py-10">
+      {label && <span className="section-label">{label}</span>}
+      <h2 className="mt-3 text-xl font-semibold tracking-tight">{title}</h2>
+      <div className="mt-5">{children}</div>
+    </section>
+  );
+}
+
+function Bullets({ items }: { items: string[] }) {
+  return (
+    <ul className="space-y-3">
+      {items.map((item, i) => (
+        <li key={i} className="flex items-start gap-3 text-secondary">
+          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand" />
+          <span className="leading-relaxed">{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 const ProjetoDetalhe = () => {
   const { slug } = useParams();
-  const { t } = useTranslation();
-  const projectIndex = projects.findIndex((p) => p.slug === slug);
-  const project = projects[projectIndex];
-  const nextProject = projects[(projectIndex + 1) % projects.length];
+  const index = projects.findIndex((p) => p.slug === slug);
+  const project = projects[index];
 
   if (!project) {
     return (
-      <PageTransition>
-        <main className="pt-10 lg:pt-16 container max-w-4xl px-6 py-20 text-center">
-          <h1 className="text-2xl font-bold mb-4">Projeto não encontrado</h1>
-          <Button asChild variant="outline">
-            <Link to="/projetos">Voltar aos projetos</Link>
-          </Button>
-        </main>
-      </PageTransition>
+      <main className="container-page py-24 text-center">
+        <h1 className="text-2xl font-semibold">Projeto não encontrado</h1>
+        <Link to="/trabalhos" className="btn-ghost mt-6 inline-flex">
+          Voltar aos projetos
+        </Link>
+      </main>
     );
   }
 
-  const architectureNodes = project.architectureNodes.map((label, i) => ({
-    id: `node-${i}`,
-    label,
-    type: (i === 0 ? "source" : i === project.architectureNodes.length - 1 ? "output" : i % 2 === 0 ? "storage" : "process") as 'source' | 'process' | 'storage' | 'output',
-  }));
-
-  const sectionDelay = 0.05;
+  const nextProject = projects[(index + 1) % projects.length];
+  const techWhy = explainProjectStack(project.stack);
 
   return (
-    <PageTransition>
-      <main className="pt-10 lg:pt-16">
-        <article className="container max-w-4xl px-6 py-12">
-          {/* Back link */}
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3 }}
-            className="mb-8"
-          >
-            <Link
-              to="/projetos"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <ArrowLeft size={16} />
-              Voltar aos projetos
-            </Link>
-          </motion.div>
+    <main className="container-page max-w-3xl py-12 md:py-16">
+      <Link
+        to="/trabalhos"
+        className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
+      >
+        <ArrowLeft size={15} /> Voltar aos projetos
+      </Link>
 
-          {/* Header */}
-          <motion.header
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-12"
-            layoutId={`project-card-${project.slug}`}
-          >
-            <p className="text-sm font-medium text-primary uppercase tracking-wider mb-3">
-              {project.organization}
-            </p>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
-              {project.title}
-            </h1>
-            <p className="text-lg text-foreground/80 mb-6">
-              {project.headline}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <span key={tag} className="chip chip-accent">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </motion.header>
+      {/* Header */}
+      <header className="mt-8">
+        <span className="font-mono-jb text-xs uppercase tracking-widest text-brand">
+          {project.organization}
+        </span>
+        <h1 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
+          {project.title}
+        </h1>
+        <p className="section-subtitle mt-4 text-lg">{project.headline}</p>
+        <div className="mt-5 flex flex-wrap gap-1.5">
+          {project.tags.map((tag) => (
+            <span key={tag} className="chip">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
 
-          {/* Impacto / Resultados — primeiro para storytelling nível pleno */}
-          {project.impact && project.impact.length > 0 && (
-            <motion.section
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="mb-12"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <TrendingUp size={20} className="text-primary" />
-                <h2 className="text-xl font-semibold">{t("projectDetail.impactTitle")}</h2>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {project.impact.map((metric, i) => (
-                  <div
-                    key={i}
-                    className={`rounded-xl border p-4 ${
-                      metric.highlight
-                        ? "border-primary/30 bg-primary/5"
-                        : "border-border bg-card"
-                    }`}
-                  >
-                    <p className="metric-value text-primary">{metric.value}</p>
-                    <p className="metric-label mt-1">{metric.label}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.section>
-          )}
-
-          {/* Context */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: sectionDelay }}
-            className="mb-12"
-          >
-            <h2 className="text-xl font-semibold mb-4">Contexto</h2>
-            <p className="text-foreground/75 leading-relaxed">
-              {project.context}
-            </p>
-          </motion.section>
-
-          {/* What I built */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: sectionDelay * 2 }}
-            className="mb-12"
-          >
-            <h2 className="text-xl font-semibold mb-4">O que eu construí</h2>
-            <ul className="space-y-3">
-              {project.whatIBuilt.map((item, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-3 text-foreground/75"
-                >
-                  <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.section>
-
-          {/* Architecture */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: sectionDelay * 3 }}
-            className="mb-12"
-          >
-            <h2 className="text-xl font-semibold mb-6">Arquitetura</h2>
-            <div className="card-premium">
-              <ArchitectureFlow nodes={architectureNodes} />
-              {project.architectureDescription && (
-                <p className="text-sm text-foreground/60 mt-4 pt-4 border-t border-border">
-                  {project.architectureDescription}
-                </p>
-              )}
-            </div>
-          </motion.section>
-
-          {/* Features - only for Hermes */}
-          {project.features && project.features.length > 0 && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: sectionDelay * 3.5 }}
-              className="mb-12"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <Wrench size={20} className="text-primary" />
-                <h2 className="text-xl font-semibold">Funcionalidades principais</h2>
-              </div>
-              <ul className="space-y-3">
-                {project.features.map((item, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-3 text-foreground/75"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.section>
-          )}
-
-          {/* Integrations - only for Hermes */}
-          {project.integrations && project.integrations.length > 0 && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: sectionDelay * 3.8 }}
-              className="mb-12"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <Plug size={20} className="text-primary" />
-                <h2 className="text-xl font-semibold">Integrações do Hermes</h2>
-              </div>
-              <ul className="space-y-3">
-                {project.integrations.map((item, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-3 text-foreground/75"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.section>
-          )}
-
-          {/* Stack */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: sectionDelay * 4 }}
-            className="mb-12"
-          >
-            <h2 className="text-xl font-semibold mb-4">Stack</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {project.stack.map((category) => (
-                <div key={category.category} className="card-premium">
-                  <h3 className="text-sm font-medium text-primary mb-3">
-                    {category.category}
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {category.items.map((item) => (
-                      <span key={item} className="chip">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* Responsibilities */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: sectionDelay * 5 }}
-            className="mb-12"
-          >
-            <h2 className="text-xl font-semibold mb-4">
-              Minhas responsabilidades
-            </h2>
-            <ul className="space-y-3">
-              {project.responsibilities.map((item, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-3 text-foreground/75"
-                >
-                  <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.section>
-
-          {/* Challenges */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: sectionDelay * 6 }}
-            className="mb-12"
-          >
-            <h2 className="text-xl font-semibold mb-4">
-              Desafios e como resolvi
-            </h2>
-            <div className="space-y-4">
-              {project.challenges.map((item, i) => (
-                <div key={i} className="card-premium">
-                  <p className="text-sm font-medium text-primary mb-2">
-                    Desafio
-                  </p>
-                  <p className="text-foreground/75 mb-3">{item.challenge}</p>
-                  <p className="text-sm font-medium text-primary mb-2">
-                    Solução
-                  </p>
-                  <p className="text-foreground/75">{item.solution}</p>
-                </div>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* Decisions and trade-offs */}
-          {project.decisions && project.decisions.length > 0 && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: sectionDelay * 7 }}
-              className="mb-12"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <Lightbulb size={20} className="text-primary" />
-                <h2 className="text-xl font-semibold">Decisões e trade-offs</h2>
-              </div>
-              <div className="space-y-3">
-                {project.decisions.map((item, i) => (
-                  <div key={i} className="card-premium py-4">
-                    <p className="text-sm font-medium text-foreground mb-1">
-                      Decisão: {item.decision}
-                    </p>
-                    <p className="text-sm text-foreground/60">
-                      Motivo: {item.reason}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </motion.section>
-          )}
-
-          {/* Reliability and governance */}
-          {project.reliability && project.reliability.length > 0 && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: sectionDelay * 8 }}
-              className="mb-12"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <ShieldCheck size={20} className="text-primary" />
-                <h2 className="text-xl font-semibold">Confiabilidade e governança</h2>
-              </div>
-              <ul className="space-y-2">
-                {project.reliability.map((item, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-3 text-foreground/75"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.section>
-          )}
-
-          {/* Observability */}
-          {project.observability && project.observability.length > 0 && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: sectionDelay * 9 }}
-              className="mb-12"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <Activity size={20} className="text-primary" />
-                <h2 className="text-xl font-semibold">Observabilidade</h2>
-              </div>
-              <ul className="space-y-2">
-                {project.observability.map((item, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-3 text-foreground/75"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.section>
-          )}
-
-          {/* Engineering practices - only for Hermes */}
-          {project.engineeringPractices && project.engineeringPractices.length > 0 && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: sectionDelay * 9.5 }}
-              className="mb-12"
-            >
-              <h2 className="text-xl font-semibold mb-4">Práticas de engenharia aplicadas</h2>
-              <div className="card-premium">
-                <ul className="space-y-2">
-                  {project.engineeringPractices.map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-3 text-foreground/75"
-                    >
-                      <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.section>
-          )}
-
-          {/* Confidentiality note */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: sectionDelay * 10 }}
-            className="border-t border-border pt-8 mb-12"
-          >
-            <div className="flex items-start gap-3 text-sm text-foreground/50">
-              <Shield size={18} className="flex-shrink-0 mt-0.5" />
-              <p>
-                Alguns detalhes foram generalizados por confidencialidade,
-                mantendo arquitetura e decisões técnicas.
+      {/* Impacto */}
+      {project.impact && project.impact.length > 0 && (
+        <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-3">
+          {project.impact.map((metric, i) => (
+            <div key={i} className="bg-surface-1 p-5">
+              <p className="text-2xl font-semibold tracking-tight text-brand">
+                {metric.value}
               </p>
+              <p className="mt-1 text-sm text-muted">{metric.label}</p>
             </div>
-          </motion.section>
+          ))}
+        </div>
+      )}
 
-          {/* Navigation */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: sectionDelay * 11 }}
-            className="space-y-6"
-          >
-            {/* Next project */}
-            <div>
-              <p className="text-sm text-muted-foreground mb-3">Próximo projeto</p>
-              <Link
-                to={`/projetos/${nextProject.slug}`}
-                className="group block card-premium hover:border-primary/40"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-xs text-primary uppercase tracking-wider mb-1">
-                      {nextProject.organization}
-                    </p>
-                    <h3 className="font-semibold group-hover:text-primary transition-colors">
-                      {nextProject.title}
-                    </h3>
-                  </div>
-                  <ArrowRight size={20} className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+      <Section label="// contexto" title="Contexto">
+        <p className="leading-relaxed text-secondary">{project.context}</p>
+      </Section>
+
+      <Section label="// entrega" title="O que eu construí">
+        <Bullets items={project.whatIBuilt} />
+      </Section>
+
+      {/* Arquitetura */}
+      <Section label="// arquitetura" title="Arquitetura">
+        <div className="flex flex-wrap items-center gap-x-1 gap-y-2">
+          {project.architectureNodes.map((node, i) => (
+            <span key={i} className="flex items-center gap-1">
+              <span className="rounded-md border border-border bg-surface-2 px-2.5 py-1 font-mono-jb text-xs">
+                {node}
+              </span>
+              {i < project.architectureNodes.length - 1 && (
+                <ChevronRight size={14} className="text-muted" />
+              )}
+            </span>
+          ))}
+        </div>
+        {project.architectureDescription && (
+          <p className="mt-5 leading-relaxed text-secondary">
+            {project.architectureDescription}
+          </p>
+        )}
+      </Section>
+
+      {/* Stack */}
+      <Section label="// stack" title="Stack">
+        <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
+          {project.stack.map((cat) => (
+            <div key={cat.category}>
+              <h3 className="font-mono-jb text-xs uppercase tracking-wider text-muted">
+                {cat.category}
+              </h3>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {cat.items.map((item) => (
+                  <span key={item} className="chip">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Por que essa stack — explicação de cada tecnologia */}
+      {techWhy.length > 0 && (
+        <Section label="// decisões" title="Por que essa stack">
+          <p className="mb-6 text-sm text-muted">
+            Cada tecnologia foi escolhida por um motivo — não por moda.
+          </p>
+          <div className="divide-y divide-border border-y border-border">
+            {techWhy.map((t) => (
+              <div key={t.name} className="grid gap-1 py-4 sm:grid-cols-[9rem_1fr] sm:gap-4">
+                <div>
+                  <p className="font-mono-jb text-sm font-medium">{t.name}</p>
+                  <p className="text-xs text-muted">{t.role}</p>
                 </div>
-              </Link>
-            </div>
+                <p className="text-sm leading-relaxed text-secondary">{t.why}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
 
-            {/* Back to projects */}
-            <div className="text-center pt-4">
-              <Button asChild variant="outline" className="hover:border-primary/50">
-                <Link to="/projetos" className="inline-flex items-center gap-2">
-                  <ArrowLeft size={16} />
-                  Voltar aos projetos
-                </Link>
-              </Button>
+      {project.features && project.features.length > 0 && (
+        <Section label="// features" title="Funcionalidades principais">
+          <Bullets items={project.features} />
+        </Section>
+      )}
+
+      {project.integrations && project.integrations.length > 0 && (
+        <Section label="// integrações" title="Integrações">
+          <Bullets items={project.integrations} />
+        </Section>
+      )}
+
+      <Section label="// papel" title="Minhas responsabilidades">
+        <Bullets items={project.responsibilities} />
+      </Section>
+
+      {/* Desafios */}
+      <Section label="// desafios" title="Desafios e como resolvi">
+        <div className="space-y-4">
+          {project.challenges.map((item, i) => (
+            <div key={i} className="card-base">
+              <p className="font-mono-jb text-xs uppercase tracking-wider text-muted">
+                Desafio
+              </p>
+              <p className="mt-1.5 text-secondary">{item.challenge}</p>
+              <p className="mt-4 font-mono-jb text-xs uppercase tracking-wider text-brand">
+                Solução
+              </p>
+              <p className="mt-1.5 text-secondary">{item.solution}</p>
             </div>
-          </motion.section>
-        </article>
-      </main>
-    </PageTransition>
+          ))}
+        </div>
+      </Section>
+
+      {project.decisions && project.decisions.length > 0 && (
+        <Section label="// trade-offs" title="Decisões e trade-offs">
+          <div className="space-y-3">
+            {project.decisions.map((item, i) => (
+              <div key={i} className="card-base">
+                <p className="text-sm font-medium">Decisão: {item.decision}</p>
+                <p className="mt-1 text-sm text-muted">Motivo: {item.reason}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {project.reliability && project.reliability.length > 0 && (
+        <Section label="// confiabilidade" title="Confiabilidade e governança">
+          <Bullets items={project.reliability} />
+        </Section>
+      )}
+
+      {project.observability && project.observability.length > 0 && (
+        <Section label="// observabilidade" title="Observabilidade">
+          <Bullets items={project.observability} />
+        </Section>
+      )}
+
+      {project.engineeringPractices && project.engineeringPractices.length > 0 && (
+        <Section label="// engenharia" title="Práticas de engenharia aplicadas">
+          <Bullets items={project.engineeringPractices} />
+        </Section>
+      )}
+
+      {/* Confidencialidade */}
+      <div className="border-t border-border py-8">
+        <p className="text-sm text-muted">
+          Alguns detalhes foram generalizados por confidencialidade, mantendo
+          arquitetura e decisões técnicas.
+        </p>
+      </div>
+
+      {/* Próximo projeto */}
+      <Link
+        to={`/projetos/${nextProject.slug}`}
+        className="card-base group flex items-center justify-between gap-4"
+      >
+        <div>
+          <p className="font-mono-jb text-xs uppercase tracking-wider text-muted">
+            Próximo projeto
+          </p>
+          <h3 className="mt-1 font-semibold">{nextProject.title}</h3>
+        </div>
+        <ArrowUpRight
+          size={20}
+          className="shrink-0 text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-foreground"
+        />
+      </Link>
+    </main>
   );
 };
 
 export default ProjetoDetalhe;
-
