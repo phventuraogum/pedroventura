@@ -47,7 +47,7 @@ export const projects: Project[] = [
     slug: "fleury-hermespardini-integracoes-vtex",
     title: "Integrações e dados para operação digital (VTEX e ecossistema)",
     organization: "Grande Grupo de Saúde",
-    headline: "Camada de integração orientada a eventos, com governança, rastreabilidade e base analítica para operação.",
+    headline: "Eventos chegam duplicados, fora de ordem e sem aviso. Esta camada faz cada um contar exatamente uma vez, com trilha de auditoria completa.",
     context: "O projeto foi estruturado para integrar fluxos operacionais entre a plataforma VTEX e serviços internos, com foco em consistência, rastreabilidade e governança. A prioridade foi garantir que eventos e mudanças de estado fossem tratados de forma previsível, mesmo sob falhas intermitentes, reprocessos e variações de payload, mantendo uma base confiável para acompanhamento e suporte operacional.",
     whatIBuilt: [
       "Camada de integração via APIs e webhooks com validação, normalização e contratos de payload.",
@@ -149,7 +149,7 @@ export const projects: Project[] = [
     title: "Automação comercial e integração com CRM",
     organization: "Empresa do Setor Ambiental",
     roleBadge: "Full Stack",
-    headline: "Orquestração de funil com estado do lead, eventos operacionais e base analítica para acompanhamento.",
+    headline: "O estado do lead saiu do CRM e virou fonte única: cada mudança gera evento, cada métrica tem origem rastreável.",
     context: "O projeto foi estruturado para reduzir inconsistência no atendimento e dar previsibilidade ao funil comercial, conectando captação, qualificação e encaminhamento com registro de contexto e eventos. O foco foi transformar processos de operação em um fluxo orquestrado, com integrações e uma base de dados que permita acompanhar performance e diagnosticar gargalos.",
     whatIBuilt: [
       "Orquestração do fluxo do lead (captação, qualificação, encaminhamento e agendamento quando aplicável).",
@@ -247,7 +247,7 @@ export const projects: Project[] = [
     slug: "afonsina-agent-dashboard",
     title: "Pipeline de atendimento e dashboard operacional",
     organization: "Consultoria de Atendimento",
-    headline: "Consolidação de ligações, outcomes e reuniões com dedupe e camada analítica para métricas confiáveis.",
+    headline: "Ligações, reuniões e outcomes caíam em planilhas divergentes. Viraram um pipeline só, com dedupe e métricas que fecham.",
     context: "O projeto foi estruturado para consolidar eventos de atendimento (ligações, tentativas, outcomes e agendamentos) em uma base consistente, reduzindo duplicidades e suportando métricas confiáveis para operação. A prioridade foi transformar eventos dispersos em uma camada analítica clara, pronta para consumo por dashboard.",
     whatIBuilt: [
       "Pipeline de captura e normalização de eventos de atendimento (ligações, tentativas, resultados e agendamentos).",
@@ -343,7 +343,7 @@ export const projects: Project[] = [
     slug: "hermes-scraper-engine",
     title: "Engine de prospecção B2B (coleta, enriquecimento, segmentação e automação)",
     organization: "Projeto Interno",
-    headline: "Pipeline completo para gerar bases acionáveis com qualidade, dedupe, enriquecimento e integrações com CRM, voz e agendamento.",
+    headline: "Da coleta ao agendamento: transforma dados públicos em base acionável, deduplicada e enriquecida, ligada a CRM, voz e calendário.",
     context: "O Hermes foi estruturado como uma engine de prospecção B2B orientada a dados, pensada para transformar coleta e enriquecimento em uma base realmente utilizável pela operação. O fluxo parte da ingestão (scraping e fontes externas), passa por normalização e deduplicação, aplica enriquecimento e segmentação por ICP e termina na entrega de listas e integrações prontas para uso. A mesma base também sustenta eventos operacionais e uma camada analítica para dashboards e acompanhamento de performance.",
     whatIBuilt: [
       "Pipeline de ingestão com padronização de saída e tratamento de falhas para garantir previsibilidade na coleta.",
@@ -467,8 +467,8 @@ export const projects: Project[] = [
     title: "Portal de Suporte ao Cliente Multi-tenant",
     organization: "Produto Interno",
     roleBadge: "Tech Lead",
-    highlightLine: "SaaS de suporte com triagem por IA, SLA e CI/CD em VPS",
-    headline: "Portal SaaS de suporte multi-tenant com tickets, base de conhecimento, triagem com IA (N1/N2/N3), SLA e notificações em tempo real.",
+    highlightLine: "Triagem por IA decide o nível; o SLA cobra o resto",
+    headline: "O ticket certo chega no nível certo: triagem por IA decide entre N1, N2 e N3, o SLA conta o tempo e a notificação cobra.",
     context: "O projeto surgiu da necessidade de centralizar o atendimento ao cliente em uma única plataforma multi-tenant — onde cada empresa (tenant) gerencia seus tickets, usuários e base de conhecimento de forma isolada, com visão unificada para o administrador da plataforma. O foco foi construir um produto completo, com qualidade de produção: triagem automática por IA, SLA configurável, notificações multicanal e CI/CD para garantir entrega contínua.",
     whatIBuilt: [
       "Arquitetura multi-tenant com RLS: cada tenant tem isolamento total de dados no banco (pinn_admin, customer_admin, user).",
@@ -570,8 +570,8 @@ export const projects: Project[] = [
     title: "Plataforma de Gestão de OKRs e Indicadores",
     organization: "Projeto Sob Demanda",
     roleBadge: "Full Stack",
-    highlightLine: "SaaS de OKRs com importação de dados, perfis de acesso e dashboard em tempo real",
-    headline: "Sistema web de gestão estratégica com OKRs, indicadores, dashboard em tempo real, importação de dados e controle de acesso por perfil.",
+    highlightLine: "OKRs fora do PowerPoint, com dado vivo",
+    headline: "OKRs fora do slide: importação de planilha com wizard, dashboard em tempo real e cada perfil vendo o que lhe cabe.",
     context: "O cliente precisava de uma plataforma centralizada para acompanhar OKRs, indicadores e fontes de dados — substituindo planilhas manuais e relatórios dispersos. O sistema deveria suportar múltiplos perfis de acesso (admin, gestor, analista, visualizador), importação de dados por planilha com mapeamento de colunas e um dashboard que refletisse o estado real dos objetivos em tempo real.",
     whatIBuilt: [
       "Dashboard com métricas em tempo real: OKRs no prazo, em atraso, atividades por setor e ciclo.",
@@ -667,8 +667,8 @@ export const projects: Project[] = [
     title: "Plataforma de Analytics e BI Multi-tenant",
     organization: "Produto Interno",
     roleBadge: "Tech Lead",
-    highlightLine: "SaaS de BI com onboarding guiado, mapeamento assistido por IA e dashboards gerados automaticamente",
-    headline: "Plataforma SaaS de business intelligence que conecta fontes de dados externas e gera dashboards executivos automaticamente via onboarding guiado e mapeamento assistido por IA.",
+    highlightLine: "Conectou a fonte, saiu com dashboard pronto",
+    headline: "BI que se monta sozinho: o cliente conecta a fonte, a IA mapeia o schema e o dashboard executivo sai pronto no onboarding.",
     context: "O projeto nasceu de um problema real: empresas que atendem múltiplos clientes precisam de dashboards padronizados, mas cada cliente tem banco e estrutura diferentes. Configurar manualmente cada painel é lento e pouco escalável. A plataforma resolve isso com um fluxo de onboarding em etapas — o usuário conecta sua fonte de dados, a IA sugere mapeamentos e o sistema gera o dashboard com dados reais automaticamente.",
     whatIBuilt: [
       "Onboarding em 5 etapas: Template → Integração → Mapeamento → Preview → Confirmação.",
@@ -761,14 +761,434 @@ export const projects: Project[] = [
       { value: "N fontes", label: "Supabase, Sheets, CSV, API" },
     ],
   },
+
+  // ─────────────────────────────────────────────────────────────
+  // Projetos adicionais (anonimizados) — revisar métricas/detalhes
+  // ─────────────────────────────────────────────────────────────
+
+  {
+    slug: "ecossistema-operadora-turismo",
+    title: "Ecossistema de software para operadora de turismo",
+    organization: "Operadora de Turismo",
+    headline: "Quatro frentes em volta de um ERP sem API: ingestão de pacotes com IA por bridge nativa em Object Pascal, marketplace, conteúdo comercial e vídeo.",
+    context: "Ao longo do relacionamento com uma operadora de turismo, construí um ecossistema em volta da operação que já existia — um ERP legado sem API pública e um marketplace de turismo. Em vez de trocar os sistemas, criei camadas ao redor: ingestão de pacotes por IA, integração com o marketplace, geração de material comercial e um editor de vídeo com IA para redes sociais. Cada frente é um módulo independente ligado por um padrão adapter.",
+    whatIBuilt: [
+      "Ingestão de pacotes: motor que lê documentos heterogêneos (Word/PDF/web, multi-idioma) com IA e grava direto no ERP via uma bridge nativa em Object Pascal — engenharia reversa do runtime web proprietário do ERP.",
+      "Integração com marketplace de turismo: consumo de inventário e conciliação de vendas por API (autenticação de chave diária por RSA), e publicação via automação HTTP onde não há API de escrita.",
+      "Geração de conteúdo: criador de landing pages de pacotes + gerador de roteiro em PDF, com render headless.",
+      "Edição de vídeo com IA: pipeline que transforma material bruto em cortes verticais (9:16) para Reels e TikTok, com decisões de corte e legenda assistidas por IA.",
+    ],
+    architectureNodes: [
+      "Documentos (Word / PDF / web)",
+      "Extração com IA (texto + visão)",
+      "Bridge Object Pascal (ERP legado)",
+      "Integração marketplace (API + RSA)",
+      "Geração de conteúdo (LP + PDF)",
+      "Editor de vídeo IA (9:16)",
+    ],
+    architectureDescription: "Cada frente é um módulo independente ligado à operação existente por um padrão adapter — API onde há, automação onde não há. O ERP legado continua sendo a fonte da verdade; as camadas ao redor adicionam ingestão, distribuição e conteúdo sem substituir o sistema.",
+    stack: [
+      { category: "Ingestão / IA", items: ["Node.js", "TypeScript", "LLM (visão + texto)", "PyMuPDF"] },
+      { category: "ERP / Integração", items: ["Object Pascal", "PostgreSQL", "REST / JSON", "RSA"] },
+      { category: "Conteúdo / Vídeo", items: ["React", "Playwright", "Chrome headless"] },
+      { category: "Infra", items: ["Docker", "VPS Linux", "FTP"] },
+    ],
+    responsibilities: [
+      "Arquitetura do ecossistema (padrão adapter em torno de sistemas legados).",
+      "Engenharia reversa do ERP e bridge nativa em Object Pascal.",
+      "Integração com o marketplace (API + automação).",
+      "Geração de conteúdo e pipeline de vídeo com IA.",
+    ],
+    challenges: [
+      { challenge: "ERP legado sem API pública e escrita direta no banco proibida (fura regras fiscais).", solution: "Bridge na própria linguagem do ERP (Object Pascal), rodando no runtime dele — herda serial, validações e regras nativas." },
+      { challenge: "Marketplace sem endpoint de publicação (só consumo) e auth com chave diária por RSA.", solution: "Padrão adapter (API onde há, automação HTTP onde não há) e geração/cache da chave RSA por dia." },
+      { challenge: "Documentos heterogêneos: multi-idioma, PDF só-imagem, tabelas de preço densas.", solution: "Extração híbrida texto+visão por IA + validação determinística + porta de aprovação humana antes de gravar." },
+    ],
+    reliability: [
+      "Porta de aprovação humana antes de escrever no ERP.",
+      "Validação determinística barra pacote inconsistente antes de subir.",
+      "Escrita idempotente e reversível em produção (sem resíduo em testes).",
+    ],
+    tags: ["integrações", "ia", "backend", "erp", "pascal", "turismo", "automação"],
+    featured: true,
+    roleBadge: "Tech Lead",
+    highlightLine: "Engenharia reversa de um ERP legado, e um ecossistema inteiro por cima",
+    impact: [
+      { value: "4 frentes", label: "ingestão, integração, conteúdo e vídeo", highlight: true },
+      { value: "0", label: "escrita direta no banco do ERP" },
+      { value: "PT/ES/EN", label: "ingestão multi-idioma (texto + visão)" },
+    ],
+  },
+
+  {
+    slug: "saas-beleza-multitenant",
+    title: "SaaS multi-tenant para espaços de beleza",
+    organization: "Produto próprio",
+    headline: "Agendamento, gestão e atendimento por IA no WhatsApp. Cliente novo entra por configuração, não por fork.",
+    context: "Nasceu da generalização de um sistema feito para um estúdio específico, evoluído para uma base multi-tenant onde cada cliente é configuração — não fork. Cobre agendamento, gestão e um agente de IA que faz o atendimento inicial.",
+    whatIBuilt: [
+      "Base multi-tenant com isolamento por organização (RLS).",
+      "Módulo de agendamento e gestão do estúdio.",
+      "Agente de IA de atendimento integrado ao WhatsApp.",
+      "Camada de configuração por cliente (cliente = config, não fork).",
+    ],
+    architectureNodes: [
+      "Auth + RLS multi-tenant",
+      "Agendamento e gestão",
+      "IA de atendimento (WhatsApp)",
+      "Configuração por tenant",
+    ],
+    stack: [
+      { category: "Aplicação", items: ["Next.js", "React", "TypeScript"] },
+      { category: "Backend", items: ["Supabase", "PostgreSQL", "Edge Functions", "RLS"] },
+      { category: "IA", items: ["Agente de atendimento", "Evolution API (WhatsApp)"] },
+    ],
+    responsibilities: [
+      "Arquitetura multi-tenant baseada em configuração.",
+      "Desenvolvimento full stack da plataforma.",
+      "Integração do agente de IA ao atendimento.",
+    ],
+    challenges: [
+      { challenge: "Servir vários clientes sem forkar o código.", solution: "Modelo cliente = config com RLS por organização." },
+    ],
+    tags: ["saas", "multi-tenant", "ia", "backend"],
+    featured: false,
+    roleBadge: "Tech Lead",
+    highlightLine: "Cada cliente é configuração, não fork",
+  },
+
+  {
+    slug: "orquestrador-agentes-ia",
+    title: "Orquestrador de agentes de IA com centro de custo",
+    organization: "Produto interno",
+    headline: "Agentes de IA operados como um time: cada função tem dono, budget e custo visível.",
+    context: "Ferramenta interna para operar múltiplos agentes de IA como um time, cada um responsável por uma função, com controle de custo e budget. O foco foi previsibilidade financeira e governança sobre o uso de LLMs.",
+    whatIBuilt: [
+      "Orquestração de agentes por função (orquestrador + specialists).",
+      "Centro de custo e budget por agente/função.",
+      "Painel para acompanhar consumo e resultados.",
+    ],
+    architectureNodes: [
+      "Orquestrador",
+      "Sub-agentes especialistas",
+      "Camada de custo/budget",
+      "Painel de acompanhamento",
+    ],
+    stack: [
+      { category: "Aplicação", items: ["Next.js", "TypeScript"] },
+      { category: "IA", items: ["Federação de agentes", "LLMs via API"] },
+    ],
+    responsibilities: [
+      "Arquitetura da federação de agentes.",
+      "Modelo de centro de custo por função.",
+      "Desenvolvimento da interface de operação.",
+    ],
+    challenges: [
+      { challenge: "Controlar custo de LLM por função.", solution: "Centro de custo e budget atrelados a cada agente." },
+    ],
+    tags: ["ia", "agentes", "backend", "observabilidade"],
+    featured: false,
+    roleBadge: "Tech Lead",
+    highlightLine: "Cada agente tem função, budget e conta pra pagar",
+  },
+
+  {
+    slug: "mesa-executiva-agentes",
+    title: "Federação de agentes \"mesa executiva\" no WhatsApp",
+    organization: "Produto próprio",
+    headline: "Sete especialistas de IA, um orquestrador e o WhatsApp como sala de reunião.",
+    context: "Uma federação de agentes especializados que funcionam como cadeiras de uma mesa executiva, orquestrados por um agente central e acessíveis via WhatsApp. Pensada como produto standalone.",
+    whatIBuilt: [
+      "Federação de múltiplos agentes com um orquestrador central.",
+      "Adapter para conectar a mesa a um orquestrador externo como cadeira.",
+      "Canal de acesso via WhatsApp.",
+    ],
+    architectureNodes: [
+      "Orquestrador central",
+      "Agentes especialistas (cadeiras)",
+      "Adapter HTTP",
+      "Canal WhatsApp",
+    ],
+    stack: [
+      { category: "IA", items: ["Federação de agentes", "LangChain", "LLMs via API"] },
+      { category: "Integração", items: ["HTTP adapter", "WhatsApp"] },
+    ],
+    responsibilities: [
+      "Arquitetura da federação de agentes.",
+      "Integração via adapter a orquestradores externos.",
+    ],
+    challenges: [
+      { challenge: "Coordenar vários agentes com papéis distintos.", solution: "Orquestrador central roteando para agentes especialistas." },
+    ],
+    tags: ["ia", "agentes", "whatsapp"],
+    featured: false,
+    roleBadge: "Tech Lead",
+    highlightLine: "Uma mesa executiva inteira dentro do WhatsApp",
+  },
+
+  {
+    slug: "backoffice-distribuidora-erp",
+    title: "Backoffice automatizado sobre ERP",
+    organization: "Distribuidora (produtos regulados)",
+    headline: "Agentes cuidam das rotinas financeiras sobre o ERP; um dashboard mostra quanto a automação devolve por mês.",
+    context: "Projeto para colocar o backoffice \"no automático\": agentes de IA e automações financeiras integradas ao ERP corporativo, com memória corporativa e um dashboard que mede o retorno das automações. A integração ao ERP via API foi o caminho crítico.",
+    whatIBuilt: [
+      "Agentes de IA para rotinas de backoffice.",
+      "Automações financeiras integradas ao ERP.",
+      "Memória corporativa para contexto das automações.",
+      "Dashboard de ROI das automações.",
+    ],
+    architectureNodes: [
+      "ERP (API)",
+      "Agentes de IA",
+      "Automações financeiras",
+      "Memória corporativa",
+      "Dashboard de ROI",
+    ],
+    stack: [
+      { category: "Integração", items: ["APIs REST", "ERP corporativo"] },
+      { category: "Automação/IA", items: ["Agentes", "n8n", "LLMs via API"] },
+      { category: "Dados", items: ["PostgreSQL", "Views para dashboard"] },
+    ],
+    responsibilities: [
+      "Arquitetura da integração com o ERP.",
+      "Definição dos agentes e automações financeiras.",
+      "Modelagem do dashboard de ROI.",
+    ],
+    challenges: [
+      { challenge: "Depender de acesso à API do ERP (caminho crítico).", solution: "Camada de integração isolada, com contratos e fallback para não travar o restante." },
+    ],
+    tags: ["automação", "ia", "integrações", "dashboards", "financeiro"],
+    featured: false,
+    roleBadge: "Tech Lead",
+    highlightLine: "A automação presta contas: ROI medido em dashboard",
+  },
+
+  {
+    slug: "erp-operadora-turismo",
+    title: "ERP/CRM greenfield para operadora de turismo",
+    organization: "Operadora de Turismo",
+    headline: "O miolo da operação construído do zero: cotação vira reserva, reserva vira financeiro, financeiro vira voucher.",
+    context: "Construção greenfield (não fork) de um ERP/CRM single-tenant para uma operadora de turismo, cobrindo o fluxo central do negócio: da cotação à reserva, ao financeiro e à emissão de voucher, conectado a CRM e a uma camada de BI.",
+    whatIBuilt: [
+      "Fluxo cotação → reserva → financeiro → voucher.",
+      "Integração com CRM e camada analítica.",
+      "Cobrança integrada (gateway de pagamento).",
+    ],
+    architectureNodes: [
+      "CRM",
+      "Cotação/Reserva",
+      "Financeiro + gateway",
+      "Emissão de voucher",
+      "BI/Analytics",
+    ],
+    stack: [
+      { category: "Aplicação", items: ["Next.js 14", "React", "TypeScript"] },
+      { category: "Backend", items: ["Supabase", "PostgreSQL", "Edge Functions"] },
+      { category: "Integração", items: ["Gateway de pagamento", "CRM", "APIs"] },
+    ],
+    responsibilities: [
+      "Arquitetura greenfield single-tenant.",
+      "Modelagem do domínio de turismo.",
+      "Integração de pagamentos e CRM.",
+    ],
+    challenges: [
+      { challenge: "Cobrir todo o miolo do negócio sem virar um Frankenstein.", solution: "Modelagem de domínio limpa e construção do zero, camada por camada." },
+    ],
+    tags: ["backend", "integrações", "financeiro", "turismo"],
+    featured: false,
+    roleBadge: "Tech Lead",
+    highlightLine: "Cotação → reserva → financeiro → voucher, sem retrabalho",
+  },
+
+  {
+    slug: "portal-b2b-cotacoes-vtex",
+    title: "Portal B2B de cotações",
+    organization: "Distribuidor B2B",
+    headline: "Cotação B2B sem ida e volta de e-mail: o cliente monta, envia e acompanha, integrado ao e-commerce e às regras do negócio.",
+    context: "Portal para clientes B2B montarem e acompanharem cotações, integrado a uma plataforma de e-commerce (VTEX) e a um backend próprio para regras de negócio e dados.",
+    whatIBuilt: [
+      "Fluxo de cotação B2B (montagem, envio, acompanhamento).",
+      "Integração com plataforma de e-commerce e backend próprio.",
+      "Camada de dados para catálogo e pedidos.",
+    ],
+    architectureNodes: [
+      "E-commerce (VTEX)",
+      "Backend de cotações",
+      "Camada de dados",
+      "Portal B2B",
+    ],
+    stack: [
+      { category: "Frontend", items: ["React", "TypeScript"] },
+      { category: "Backend", items: ["Supabase", "PostgreSQL", "APIs REST"] },
+      { category: "Integração", items: ["VTEX"] },
+    ],
+    responsibilities: [
+      "Desenvolvimento do portal e do fluxo de cotação.",
+      "Integração com a plataforma de e-commerce.",
+    ],
+    challenges: [
+      { challenge: "Sincronizar catálogo e regras entre e-commerce e backend.", solution: "Backend próprio como fonte das regras B2B, integrado por API." },
+    ],
+    tags: ["backend", "integrações", "b2b", "e-commerce"],
+    featured: false,
+    roleBadge: "Full Stack",
+    highlightLine: "Cotação B2B sem planilha nem e-mail",
+  },
+
+  {
+    slug: "plataforma-antichurn-video",
+    title: "Plataforma de métricas e anti-churn para serviço de assinatura",
+    organization: "Produtora de Vídeo (assinatura)",
+    headline: "Uso vira sinal: métricas de engajamento que apontam churn antes do cancelamento, com automação no fluxo de edição.",
+    context: "Produto para um serviço de vídeo por assinatura, focado em medir engajamento e reduzir churn, combinado a automações no processo de edição e a um fluxo de indicação.",
+    whatIBuilt: [
+      "Plataforma de métricas de uso e retenção.",
+      "Automação de etapas do processo de edição.",
+      "Fluxo de indicação de novos clientes.",
+    ],
+    architectureNodes: [
+      "Ingestão de métricas",
+      "Camada analítica",
+      "Automação de edição",
+      "Indicação/Referral",
+    ],
+    stack: [
+      { category: "Aplicação", items: ["React", "TypeScript"] },
+      { category: "Dados", items: ["PostgreSQL", "Views para dashboards"] },
+      { category: "Automação", items: ["Automação de edição", "Integrações"] },
+    ],
+    responsibilities: [
+      "Arquitetura da plataforma de métricas.",
+      "Modelagem de indicadores de churn.",
+      "Automação do processo de edição.",
+    ],
+    challenges: [
+      { challenge: "Transformar uso em sinal acionável de churn.", solution: "Camada analítica com indicadores dedicados de retenção." },
+    ],
+    tags: ["dados", "dashboards", "automação", "saas"],
+    featured: false,
+    roleBadge: "Tech Lead",
+    highlightLine: "O churn avisa antes, se o dado estiver olhando",
+  },
+
+  {
+    slug: "sdr-ia-federado-whatsapp",
+    title: "SDR de IA federado no WhatsApp",
+    organization: "Produto interno (comercial)",
+    headline: "Um cérebro, vários especialistas: qualifica leads no WhatsApp e prospecta em rede profissional, com cada evento registrado em base.",
+    context: "Operação de pré-vendas automatizada: um SDR de IA federado (brain + sub-agentes) que conversa e qualifica leads no WhatsApp, com um braço de prospecção (BDR) em rede profissional e ingestão dos eventos em base de dados.",
+    whatIBuilt: [
+      "SDR de IA federado (agente central + sub-agentes especialistas).",
+      "Atendimento e qualificação no WhatsApp.",
+      "Braço de prospecção em rede profissional com IA de conversa.",
+      "Ingestão de eventos em base de dados para acompanhamento.",
+    ],
+    architectureNodes: [
+      "Brain (orquestrador)",
+      "Sub-agentes especialistas",
+      "Canal WhatsApp",
+      "Prospecção (rede profissional)",
+      "Ingestão de eventos",
+    ],
+    stack: [
+      { category: "IA", items: ["Federação de agentes", "LangChain", "LLMs via API"] },
+      { category: "Integração", items: ["WhatsApp (Evolution API)", "APIs de rede profissional"] },
+      { category: "Dados", items: ["PostgreSQL", "Eventos de dataset"] },
+    ],
+    responsibilities: [
+      "Arquitetura da federação de agentes.",
+      "Integração dos canais (WhatsApp e prospecção).",
+      "Pipeline de ingestão de eventos.",
+    ],
+    challenges: [
+      { challenge: "Respeitar limites de canais de prospecção.", solution: "Gates de envio e cadência controlada por conta." },
+    ],
+    tags: ["ia", "agentes", "whatsapp", "automação", "funil"],
+    featured: false,
+    roleBadge: "Tech Lead",
+    highlightLine: "A pré-venda roda sozinha; o humano entra pra fechar",
+  },
+
+  {
+    slug: "agente-regularizacao-tributaria",
+    title: "Agente de IA para regularização tributária",
+    organization: "Serviço de Regularização Tributária",
+    headline: "Duas jornadas, um agente: conduz PF e CNPJ do primeiro contato até o CRM, cada funil com as próprias regras.",
+    context: "Port de um fluxo de automação para uma arquitetura de agentes federados em LangChain, conduzindo a jornada de regularização tributária com dois funis distintos (pessoa física e jurídica) integrados a CRM.",
+    whatIBuilt: [
+      "Agente de conversa federado (núcleo verificado).",
+      "Dois funis distintos (PF e CNPJ) integrados a CRM.",
+      "Dispatcher e formatter de mensagens.",
+    ],
+    architectureNodes: [
+      "Núcleo do agente",
+      "Funil PF",
+      "Funil CNPJ",
+      "CRM",
+      "Dispatcher/Formatter",
+    ],
+    stack: [
+      { category: "IA", items: ["LangChain", "Federação de agentes", "LLMs via API"] },
+      { category: "Integração", items: ["CRM", "WhatsApp"] },
+    ],
+    responsibilities: [
+      "Port do fluxo para arquitetura de agentes.",
+      "Modelagem dos dois funis (PF/CNPJ).",
+    ],
+    challenges: [
+      { challenge: "Jornadas distintas para PF e CNPJ.", solution: "Funis separados compartilhando o mesmo núcleo de agente." },
+    ],
+    tags: ["ia", "agentes", "crm", "funil"],
+    featured: false,
+    roleBadge: "Tech Lead",
+    highlightLine: "PF e CNPJ no mesmo cérebro, cada um no seu funil",
+  },
+
+  {
+    slug: "inbox-omnichannel-sdr",
+    title: "Inbox para espelhar e controlar SDR de IA",
+    organization: "Operação de Atendimento",
+    headline: "Automação com freio de mão: o inbox espelha o SDR de IA e o humano assume a conversa a qualquer momento.",
+    context: "Camada de operação humana sobre um SDR de IA: um inbox (baseado em Chatwoot) que espelha as conversas do agente no WhatsApp e permite assumir/intervir quando necessário — mantendo controle humano sobre a automação.",
+    whatIBuilt: [
+      "Inbox espelhando as conversas do agente de IA.",
+      "Handoff humano (assumir/intervir na conversa).",
+      "Deploy dedicado em VPS, separado da operação principal.",
+    ],
+    architectureNodes: [
+      "SDR de IA (WhatsApp)",
+      "Inbox (Chatwoot)",
+      "Handoff humano",
+      "VPS dedicada",
+    ],
+    stack: [
+      { category: "Plataforma", items: ["Chatwoot", "Docker", "VPS"] },
+      { category: "Integração", items: ["WhatsApp (Evolution API)"] },
+    ],
+    responsibilities: [
+      "Montagem do inbox e do espelhamento.",
+      "Fluxo de handoff humano.",
+      "Deploy isolado em VPS.",
+    ],
+    challenges: [
+      { challenge: "Dar controle humano sem quebrar a automação.", solution: "Espelhamento em inbox com handoff explícito." },
+    ],
+    tags: ["automação", "whatsapp", "integrações", "atendimento"],
+    featured: false,
+    roleBadge: "Full Stack",
+    highlightLine: "A IA atende; o humano assume quando quiser",
+  },
+
 ];
 
-export const allTags = ["backend", "integrações", "dados", "automação", "eventos", "dashboards", "scraping", "multi-tenant", "webhooks", "governança", "observabilidade", "crm", "funil", "dedupe", "dashboard"];
+export const allTags = ["backend", "integrações", "dados", "automação", "eventos", "dashboards", "scraping", "multi-tenant", "webhooks", "governança", "observabilidade", "crm", "funil", "dedupe", "dashboard", "ia", "agentes", "whatsapp", "saas", "financeiro", "b2b", "e-commerce", "turismo", "social", "pdf", "render", "atendimento", "erp", "pascal", "api"];
 
 export const focusFilters = [
   { id: "integracoes", label: "Integrações", tags: ["integrações", "webhooks"] },
   { id: "dados", label: "Dados", tags: ["dados", "dashboards", "dashboard"] },
   { id: "automacao", label: "Automação", tags: ["automação", "funil"] },
+  { id: "ia", label: "IA & Agentes", tags: ["ia", "agentes"] },
   { id: "scraping", label: "Scraping", tags: ["scraping"] },
   { id: "dashboards", label: "Dashboards", tags: ["dashboards", "dashboard"] },
   { id: "eventos", label: "Eventos", tags: ["eventos", "webhooks"] }
