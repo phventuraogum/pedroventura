@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import { Linkedin, Mail, MessageCircle, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Mail, MessageCircle, ArrowUpRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 /* Contatos ofuscados — montados só no clique (nada de e-mail/telefone no DOM) */
@@ -34,6 +34,22 @@ const Contato = () => {
       description: "rede profissional",
       action: () => {
         window.open("https://www.linkedin.com/in/phventura/", "_blank", "noopener,noreferrer");
+      },
+    },
+    {
+      icon: Github,
+      label: "GitHub",
+      description: "projetos pessoais",
+      action: () => {
+        window.open("https://github.com/phventuraogum", "_blank", "noopener,noreferrer");
+      },
+    },
+    {
+      icon: Github,
+      label: "GitHub · Pinn",
+      description: "onde vive a maior parte do meu código de produção",
+      action: () => {
+        window.open("https://github.com/pinn-product-builder", "_blank", "noopener,noreferrer");
       },
     },
   ];
