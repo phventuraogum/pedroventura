@@ -4,10 +4,10 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import { Sidebar } from "@/components/layout/Sidebar";
+import { TopNav } from "@/components/layout/TopNav";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/hooks/useTheme";
-import Index from "./pages/Index";
+import Home from "./pages/Home";
 import Projetos from "./pages/Projetos";
 import ProjetoDetalhe from "./pages/ProjetoDetalhe";
 import Stack from "./pages/Stack";
@@ -30,7 +30,8 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Index />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/trabalhos" element={<Projetos />} />
         <Route path="/projetos" element={<Projetos />} />
         <Route path="/projetos/:slug" element={<ProjetoDetalhe />} />
         <Route path="/stack" element={<Stack />} />
@@ -51,16 +52,12 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
-          {/* Layout: Sidebar fixa + conteúdo com padding-left */}
-          <div className="flex min-h-screen">
-            <Sidebar />
-            {/* Conteúdo principal: padding para não ficar atrás da sidebar */}
-            <div className="flex-1 min-w-0 lg:pl-[220px]">
-              {/* Espaço para o top bar mobile */}
-              <div className="h-14 lg:hidden" />
+          <div className="flex min-h-screen flex-col">
+            <TopNav />
+            <div className="flex-1">
               <AnimatedRoutes />
-              <Footer />
             </div>
+            <Footer />
           </div>
         </BrowserRouter>
       </TooltipProvider>
