@@ -11,7 +11,7 @@ export function Hero() {
         <span className="badge-available">Disponível para projetos</span>
 
         <p className="mt-6 font-mono-jb text-sm text-muted">
-          Pedro Ventura — CTO na Pinn
+          Pedro Ventura
         </p>
         <h1 className="mt-3 text-[2.1rem] font-semibold leading-[1.1] tracking-tight md:text-[2.9rem]">
           Construo produtos que vão pra produção,{" "}
@@ -19,9 +19,9 @@ export function Hero() {
         </h1>
 
         <p className="section-subtitle mt-5">
-          CTO na Pinn — operação comercial B2B com IA. Arquiteto os agentes que
-          prospectam e a inteligência que dá clareza de pipeline. A equipe
-          humana fecha.
+          Engenheiro de software e arquiteto de sistemas. Integração, dados e
+          IA que aguentam produção: 18 projetos entregues, de ERPs legados a
+          plataformas multi-tenant.
         </p>
 
         <div className="mt-6 flex flex-wrap gap-2">

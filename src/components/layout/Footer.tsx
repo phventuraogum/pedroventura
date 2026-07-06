@@ -10,7 +10,7 @@ export function Footer() {
         <div>
           <p className="text-sm font-medium">Pedro Ventura</p>
           <p className="mt-0.5 text-xs text-muted">
-            © {year} · CTO na Pinn · sistemas que vão pra produção
+            © {year} · sistemas que vão pra produção
           </p>
         </div>
 

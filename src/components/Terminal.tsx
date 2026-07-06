@@ -15,7 +15,7 @@ const RESPONSES: Record<string, string[]> = {
     "  contato    onde me achar",
     "  clear      limpa o terminal",
   ],
-  whoami: ["CTO @ Pinn · operação comercial B2B com IA · integração / dados / agentes"],
+  whoami: ["engenheiro de software · arquiteto de sistemas · integração / dados / IA"],
   sobre: [
     "O que a proposta promete é o que roda em produção.",
     "Arquiteto SaaS multi-tenant, agentes de IA (OpenAI, Anthropic, LangChain)",
