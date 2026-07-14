@@ -41,7 +41,7 @@ export function Footer() {
             <Linkedin size={16} />
           </a>
           <Link to="/contato" className="btn-ghost !px-3 !py-1.5 text-xs">
-            Contato
+            Falar comigo
           </Link>
         </div>
       </div>

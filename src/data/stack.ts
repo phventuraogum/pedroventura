@@ -121,7 +121,7 @@ export const architectures: Architecture[] = [
     tagline: "Ingestão de eventos tolerante a falhas, sem duplicidade.",
     description: "Padrão para receber e processar eventos (webhooks, integrações, filas) de forma segura, garantindo que reentregas, falhas intermitentes e reprocessos nunca gerem dados duplicados ou estados inconsistentes.",
     problem: "Sistemas distribuídos entregam eventos mais de uma vez. Webhooks retentam, filas reprocessam, integrações falham e reconectam. Sem um mecanismo explícito, cada reentrega pode criar duplicatas, gerar cobrança dupla, movimentar um lead duas vezes ou quebrar dashboards.",
-    approach: "Cada evento recebe uma chave de idempotência gerada na origem (ou derivada do payload). Na ingestão, a chave é verificada antes de processar — eventos já vistos são ignorados silenciosamente. O estado do processamento fica registrado, permitindo reprocesso seguro a qualquer momento.",
+    approach: "Cada evento recebe uma chave de idempotência gerada na origem (ou derivada do payload). Na ingestão, a chave é verificada antes de processar, eventos já vistos são ignorados silenciosamente. O estado do processamento fica registrado, permitindo reprocesso seguro a qualquer momento.",
     keyPrinciples: [
       "Idempotência por chave: o mesmo evento processado N vezes tem o mesmo efeito que 1 vez.",
       "Separação entre recepção e processamento: ingestão rápida, lógica de negócio assíncrona.",
@@ -192,7 +192,7 @@ export const architectures: Architecture[] = [
     tagline: "Dados organizados em camadas para reprocesso seguro e consumo analítico.",
     description: "Padrão de modelagem de dados em três camadas independentes: Raw (dado bruto, imutável), Curated (dado limpo e normalizado) e Analytics (views e agregações para consumo). Permite evoluir qualquer camada sem impactar as outras.",
     problem: "Em sistemas que recebem dados de múltiplas fontes, misturar dado bruto com dado transformado cria um problema sério: qualquer reprocesso pode sobrescrever ou corromper o histórico. Além disso, a lógica de transformação acaba sendo replicada no frontend, em jobs e em queries ad-hoc, criando inconsistências.",
-    approach: "Cada dado percorre três camadas com responsabilidades distintas. A camada Raw recebe e persiste o dado exatamente como chegou — imutável. A camada Curated aplica normalização, limpeza e enriquecimento. A camada Analytics expõe views e agregações para consumo por dashboards e APIs. O reprocesso é sempre possível e seguro, pois o dado bruto original permanece intacto.",
+    approach: "Cada dado percorre três camadas com responsabilidades distintas. A camada Raw recebe e persiste o dado exatamente como chegou, imutável. A camada Curated aplica normalização, limpeza e enriquecimento. A camada Analytics expõe views e agregações para consumo por dashboards e APIs. O reprocesso é sempre possível e seguro, pois o dado bruto original permanece intacto.",
     keyPrinciples: [
       "Raw é imutável: nenhuma transformação toca o dado original.",
       "Curated tem schema estável: contrato claro para quem consome.",
@@ -226,7 +226,7 @@ export const architectures: Architecture[] = [
     title: "Orquestração de Funil com CRM",
     tagline: "Estado do lead centralizado, funil rastreável e métricas confiáveis.",
     description: "Padrão para integrar captação, qualificação e movimentação de leads em um funil orquestrado, com estado persistido fora do CRM. Resolve a dependência total do CRM como fonte única de verdade, permitindo rastreabilidade, reprocesso e métricas independentes.",
-    problem: "A maioria dos times comerciais usa o CRM como única fonte de verdade — mas CRMs são otimizados para UX, não para consistência de dados. Leads se perdem, etapas são puladas, eventos não são registrados e as métricas do painel dependem de quem lembrou de atualizar o card.",
+    problem: "A maioria dos times comerciais usa o CRM como única fonte de verdade, mas CRMs são otimizados para UX, não para consistência de dados. Leads se perdem, etapas são puladas, eventos não são registrados e as métricas do painel dependem de quem lembrou de atualizar o card.",
     approach: "O estado do lead passa a ser gerenciado fora do CRM, em uma tabela própria com histórico de transições. O CRM recebe atualizações via integração, mas deixa de ser a fonte de verdade operacional. Eventos de qualificação, encaminhamento, agendamento e outcome são registrados na base e consolidados em views analíticas.",
     keyPrinciples: [
       "Estado do lead fora do CRM: independência e controle total sobre transições.",
@@ -261,8 +261,8 @@ export const architectures: Architecture[] = [
     title: "Arquitetura Multi-tenant com RLS",
     tagline: "Isolamento de dados por tenant no banco, sem lógica extra na aplicação.",
     description: "Padrão para construir sistemas SaaS onde múltiplos clientes (tenants) compartilham a mesma infraestrutura, mas com isolamento total de dados garantido por Row Level Security (RLS) no PostgreSQL. Elimina a necessidade de filtros manuais por tenant na aplicação.",
-    problem: "Em sistemas multi-tenant, a abordagem mais simples é filtrar `WHERE org_id = ?` em cada query — mas isso é frágil. Uma query esquecida expõe dados de outro cliente. Testar todos os cenários é difícil. E quando o sistema cresce, garantir isolamento vira um problema de revisão de código constante.",
-    approach: "A segregação é resolvida no banco com RLS: policies que automaticamente limitam SELECT, INSERT, UPDATE e DELETE ao tenant do usuário autenticado, derivado do JWT. A aplicação passa o token, o banco aplica o filtro. Não importa qual query for executada — o RLS garante que os dados retornados pertencem ao tenant correto.",
+    problem: "Em sistemas multi-tenant, a abordagem mais simples é filtrar `WHERE org_id = ?` em cada query, mas isso é frágil. Uma query esquecida expõe dados de outro cliente. Testar todos os cenários é difícil. E quando o sistema cresce, garantir isolamento vira um problema de revisão de código constante.",
+    approach: "A segregação é resolvida no banco com RLS: policies que automaticamente limitam SELECT, INSERT, UPDATE e DELETE ao tenant do usuário autenticado, derivado do JWT. A aplicação passa o token, o banco aplica o filtro. Não importa qual query for executada, o RLS garante que os dados retornados pertencem ao tenant correto.",
     keyPrinciples: [
       "RLS como camada de segurança: isolamento garantido independente da query.",
       "org_id derivado do JWT: o token carrega o contexto do tenant.",
@@ -278,7 +278,7 @@ export const architectures: Architecture[] = [
     nodes: [
       { id: "auth",    label: "Autenticação JWT",    description: "Token com claims do usuário, incluindo org_id e role.", type: "source" },
       { id: "rls",     label: "Row Level Security",  description: "Policies no banco que filtram dados automaticamente por org_id.", type: "process" },
-      { id: "roles",   label: "Roles e permissões",  description: "admin, customer_admin, user — cada um com visibilidade diferente.", type: "process" },
+      { id: "roles",   label: "Roles e permissões",  description: "admin, customer_admin, user, cada um com visibilidade diferente.", type: "process" },
       { id: "data",    label: "Dados do tenant",     description: "Tabelas com org_id; o RLS garante que cada tenant vê apenas o seu.", type: "storage" },
       { id: "api",     label: "API / Edge Function", description: "Passa o JWT; o banco aplica o isolamento sem filtros manuais.", type: "output" },
     ],
@@ -313,7 +313,7 @@ export const architectures: Architecture[] = [
       { id: "outbox",  label: "Tabela de outbox",   description: "Registro transacional da notificação pendente com status.", type: "storage" },
       { id: "worker",  label: "Worker / pg_net",    description: "Processo que lê pendentes, tenta enviar e atualiza status.", type: "process" },
       { id: "channel", label: "Canal de envio",     description: "SMTP (e-mail), Evolution API (WhatsApp), in-app.", type: "process" },
-      { id: "result",  label: "Status final",       description: "Sent, failed, retrying — rastreável na outbox.", type: "output" },
+      { id: "result",  label: "Status final",       description: "Sent, failed, retrying, rastreável na outbox.", type: "output" },
     ],
     connections: [
       { from: "event",  to: "outbox" },

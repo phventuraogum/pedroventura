@@ -9,9 +9,7 @@ export function About() {
   return (
     <section id="sobre" className="border-t border-border">
       <div className="container-page py-16 md:py-24">
-        <span className="section-label">// sobre</span>
-
-        <div className="mt-6 grid gap-10 md:grid-cols-[1.3fr_1fr] md:gap-16">
+        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr] md:gap-16">
           <div>
             <h2 className="section-title">
               O que a proposta promete é o que roda em produção.

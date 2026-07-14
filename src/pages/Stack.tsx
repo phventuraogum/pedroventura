@@ -6,7 +6,7 @@ import { techRationale, type TechRationale } from "@/data/techRationale";
 const principles = [
   {
     title: "Idempotência em tudo que é crítico",
-    text: "Webhooks retentam, filas reprocessam. Todo fluxo crítico é desenhado para que o mesmo evento processado N vezes tenha o efeito de 1 — chave de idempotência, dedupe e reprocesso explícito.",
+    text: "Webhooks retentam, filas reprocessam. Todo fluxo crítico é desenhado para que o mesmo evento processado N vezes tenha o efeito de 1, chave de idempotência, dedupe e reprocesso explícito.",
   },
   {
     title: "Camadas raw → curated → analytics",
@@ -14,11 +14,11 @@ const principles = [
   },
   {
     title: "Observabilidade desde o dia 1",
-    text: "Logs estruturados, correlation id e trilha de auditoria não são acabamento — são o que permite operar em produção e responder 'o que aconteceu' com evidência.",
+    text: "Logs estruturados, correlation id e trilha de auditoria não são acabamento, são o que permite operar em produção e responder 'o que aconteceu' com evidência.",
   },
   {
     title: "Multi-tenant por configuração, não fork",
-    text: "Cliente novo é configuração sobre a mesma base, com isolamento por RLS. Um código, N clientes — sem Frankenstein de forks divergindo.",
+    text: "Cliente novo é configuração sobre a mesma base, com isolamento por RLS. Um código, N clientes, sem Frankenstein de forks divergindo.",
   },
 ];
 
@@ -57,7 +57,6 @@ const Stack = () => {
     <main className="container-page py-16 md:py-20">
       {/* Header */}
       <header className="animate-in-up">
-        <span className="section-label">// stack</span>
         <h1 className="section-title mt-4">Como eu construo</h1>
         <p className="section-subtitle mt-4">
           Princípios primeiro. Ferramenta é consequência.
@@ -66,7 +65,6 @@ const Stack = () => {
 
       {/* Princípios */}
       <section className="mt-12 border-t border-border pt-10">
-        <span className="section-label">// princípios</span>
         <h2 className="mt-3 text-xl font-semibold tracking-tight">
           O que não muda de projeto pra projeto
         </h2>
@@ -82,7 +80,6 @@ const Stack = () => {
 
       {/* Domínios */}
       <section className="mt-12 border-t border-border pt-10">
-        <span className="section-label">// domínios</span>
         <h2 className="mt-3 text-xl font-semibold tracking-tight">
           Áreas de atuação
         </h2>
@@ -100,8 +97,7 @@ const Stack = () => {
               </div>
               <ul className="mt-4 space-y-1.5">
                 {cat.practices.map((pr) => (
-                  <li key={pr} className="flex items-start gap-2.5 text-xs text-secondary">
-                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand" />
+                  <li key={pr} className="text-xs text-secondary">
                     {pr}
                   </li>
                 ))}
@@ -113,7 +109,6 @@ const Stack = () => {
 
       {/* Ferramentas e porquês */}
       <section className="mt-12 border-t border-border pt-10">
-        <span className="section-label">// decisões</span>
         <h2 className="mt-3 text-xl font-semibold tracking-tight">
           Cada ferramenta, um porquê
         </h2>
@@ -157,7 +152,7 @@ const Stack = () => {
             Próximo nível
           </p>
           <h3 className="mt-1 font-semibold">
-            Arquiteturas autorais — os padrões que aplico em produção
+            Arquiteturas autorais, os padrões que aplico em produção
           </h3>
         </div>
         <ArrowUpRight

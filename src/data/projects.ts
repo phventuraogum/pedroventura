@@ -10,7 +10,7 @@ export interface Project {
   title: string;
   organization: string;
   headline: string;
-  /** Métricas de impacto (outcomes mensuráveis) — crítico para portfólio nível big tech */
+  /** Métricas de impacto (outcomes mensuráveis), crítico para portfólio nível big tech */
   impact?: ImpactMetric[];
   context: string;
   whatIBuilt: string[];
@@ -469,7 +469,7 @@ export const projects: Project[] = [
     roleBadge: "Tech Lead",
     highlightLine: "Triagem por IA decide o nível; o SLA cobra o resto",
     headline: "O ticket certo chega no nível certo: triagem por IA decide entre N1, N2 e N3, o SLA conta o tempo e a notificação cobra.",
-    context: "O projeto surgiu da necessidade de centralizar o atendimento ao cliente em uma única plataforma multi-tenant — onde cada empresa (tenant) gerencia seus tickets, usuários e base de conhecimento de forma isolada, com visão unificada para o administrador da plataforma. O foco foi construir um produto completo, com qualidade de produção: triagem automática por IA, SLA configurável, notificações multicanal e CI/CD para garantir entrega contínua.",
+    context: "O projeto surgiu da necessidade de centralizar o atendimento ao cliente em uma única plataforma multi-tenant, onde cada empresa (tenant) gerencia seus tickets, usuários e base de conhecimento de forma isolada, com visão unificada para o administrador da plataforma. O foco foi construir um produto completo, com qualidade de produção: triagem automática por IA, SLA configurável, notificações multicanal e CI/CD para garantir entrega contínua.",
     whatIBuilt: [
       "Arquitetura multi-tenant com RLS: cada tenant tem isolamento total de dados no banco (pinn_admin, customer_admin, user).",
       "Sistema de tickets com fluxo de estados, atribuição, histórico de mensagens e SLA por produto e severidade.",
@@ -524,7 +524,7 @@ export const projects: Project[] = [
     challenges: [
       {
         challenge: "Garantir isolamento total de dados entre tenants sem filtros manuais em cada query.",
-        solution: "RLS com policies por org_id derivado do JWT — o banco filtra automaticamente, independente da query.",
+        solution: "RLS com policies por org_id derivado do JWT, o banco filtra automaticamente, independente da query.",
       },
       {
         challenge: "Notificações que chegam ao destinatário mesmo com instabilidade dos serviços externos.",
@@ -572,7 +572,7 @@ export const projects: Project[] = [
     roleBadge: "Full Stack",
     highlightLine: "OKRs fora do PowerPoint, com dado vivo",
     headline: "OKRs fora do slide: importação de planilha com wizard, dashboard em tempo real e cada perfil vendo o que lhe cabe.",
-    context: "O cliente precisava de uma plataforma centralizada para acompanhar OKRs, indicadores e fontes de dados — substituindo planilhas manuais e relatórios dispersos. O sistema deveria suportar múltiplos perfis de acesso (admin, gestor, analista, visualizador), importação de dados por planilha com mapeamento de colunas e um dashboard que refletisse o estado real dos objetivos em tempo real.",
+    context: "O cliente precisava de uma plataforma centralizada para acompanhar OKRs, indicadores e fontes de dados, substituindo planilhas manuais e relatórios dispersos. O sistema deveria suportar múltiplos perfis de acesso (admin, gestor, analista, visualizador), importação de dados por planilha com mapeamento de colunas e um dashboard que refletisse o estado real dos objetivos em tempo real.",
     whatIBuilt: [
       "Dashboard com métricas em tempo real: OKRs no prazo, em atraso, atividades por setor e ciclo.",
       "Gestão completa de OKRs: ciclos (períodos), setores/departamentos, objetivos, resultados-chave (KRs) e tarefas com status, prioridade e responsáveis.",
@@ -622,7 +622,7 @@ export const projects: Project[] = [
     challenges: [
       {
         challenge: "Garantir que cada perfil veja apenas o que tem permissão, sem filtros manuais.",
-        solution: "RLS com policies por role derivada do JWT — o banco filtra automaticamente.",
+        solution: "RLS com policies por role derivada do JWT, o banco filtra automaticamente.",
       },
       {
         challenge: "Importar planilhas com schemas heterogêneos sem corromper os dados do sistema.",
@@ -669,7 +669,7 @@ export const projects: Project[] = [
     roleBadge: "Tech Lead",
     highlightLine: "Conectou a fonte, saiu com dashboard pronto",
     headline: "BI que se monta sozinho: o cliente conecta a fonte, a IA mapeia o schema e o dashboard executivo sai pronto no onboarding.",
-    context: "O projeto nasceu de um problema real: empresas que atendem múltiplos clientes precisam de dashboards padronizados, mas cada cliente tem banco e estrutura diferentes. Configurar manualmente cada painel é lento e pouco escalável. A plataforma resolve isso com um fluxo de onboarding em etapas — o usuário conecta sua fonte de dados, a IA sugere mapeamentos e o sistema gera o dashboard com dados reais automaticamente.",
+    context: "O projeto nasceu de um problema real: empresas que atendem múltiplos clientes precisam de dashboards padronizados, mas cada cliente tem banco e estrutura diferentes. Configurar manualmente cada painel é lento e pouco escalável. A plataforma resolve isso com um fluxo de onboarding em etapas, o usuário conecta sua fonte de dados, a IA sugere mapeamentos e o sistema gera o dashboard com dados reais automaticamente.",
     whatIBuilt: [
       "Onboarding em 5 etapas: Template → Integração → Mapeamento → Preview → Confirmação.",
       "Integração com Supabase do cliente: detecção de tabelas/colunas, filtro automático de tabelas de sistema e amostras de dados.",
@@ -698,7 +698,7 @@ export const projects: Project[] = [
       "15+ widgets: KPIs, gráficos, funil, tabela, insights.",
       "Engine de dashboard com resolução de colunas e fallbacks.",
       "Painel admin para organizações, templates e métricas customizadas.",
-      "Multi-tenancy com RLS — dados de cada cliente isolados.",
+      "Multi-tenancy com RLS, dados de cada cliente isolados.",
       "Suporte a Supabase, Google Sheets, CSV e API como fontes.",
     ],
     integrations: [
@@ -721,7 +721,7 @@ export const projects: Project[] = [
     ],
     challenges: [
       {
-        challenge: "Cada cliente tem um banco com schema diferente — como gerar um dashboard padronizado para todos?",
+        challenge: "Cada cliente tem um banco com schema diferente, como gerar um dashboard padronizado para todos?",
         solution: "Templates com métricas semânticas (ex.: total_leads, investimento) + mapeamento do usuário que vincula métrica a campo real do banco do cliente.",
       },
       {
@@ -734,7 +734,7 @@ export const projects: Project[] = [
       },
     ],
     decisions: [
-      { decision: "Templates com métricas semânticas", reason: "Desacopla o template do schema do cliente — o mapeamento conecta os dois sem depender de nomes de colunas fixos." },
+      { decision: "Templates com métricas semânticas", reason: "Desacopla o template do schema do cliente, o mapeamento conecta os dois sem depender de nomes de colunas fixos." },
       { decision: "Edge Functions para IA e fetch de dados", reason: "Execução próxima ao banco Supabase, sem servidor intermediário, com acesso ao contexto do cliente." },
       { decision: "RLS por org_id", reason: "Garante que dados de um cliente nunca sejam expostos para outro, independente da query." },
     ],
@@ -763,7 +763,7 @@ export const projects: Project[] = [
   },
 
   // ─────────────────────────────────────────────────────────────
-  // Projetos adicionais (anonimizados) — revisar métricas/detalhes
+  // Projetos adicionais (anonimizados), revisar métricas/detalhes
   // ─────────────────────────────────────────────────────────────
 
   {
@@ -771,9 +771,9 @@ export const projects: Project[] = [
     title: "Ecossistema de software para operadora de turismo",
     organization: "Operadora de Turismo",
     headline: "Quatro frentes em volta de um ERP sem API: ingestão de pacotes com IA por bridge nativa em Object Pascal, marketplace, conteúdo comercial e vídeo.",
-    context: "Ao longo do relacionamento com uma operadora de turismo, construí um ecossistema em volta da operação que já existia — um ERP legado sem API pública e um marketplace de turismo. Em vez de trocar os sistemas, criei camadas ao redor: ingestão de pacotes por IA, integração com o marketplace, geração de material comercial e um editor de vídeo com IA para redes sociais. Cada frente é um módulo independente ligado por um padrão adapter.",
+    context: "Ao longo do relacionamento com uma operadora de turismo, construí um ecossistema em volta da operação que já existia, um ERP legado sem API pública e um marketplace de turismo. Em vez de trocar os sistemas, criei camadas ao redor: ingestão de pacotes por IA, integração com o marketplace, geração de material comercial e um editor de vídeo com IA para redes sociais. Cada frente é um módulo independente ligado por um padrão adapter.",
     whatIBuilt: [
-      "Ingestão de pacotes: motor que lê documentos heterogêneos (Word/PDF/web, multi-idioma) com IA e grava direto no ERP via uma bridge nativa em Object Pascal — engenharia reversa do runtime web proprietário do ERP.",
+      "Ingestão de pacotes: motor que lê documentos heterogêneos (Word/PDF/web, multi-idioma) com IA e grava direto no ERP via uma bridge nativa em Object Pascal, engenharia reversa do runtime web proprietário do ERP.",
       "Integração com marketplace de turismo: consumo de inventário e conciliação de vendas por API (autenticação de chave diária por RSA), e publicação via automação HTTP onde não há API de escrita.",
       "Geração de conteúdo: criador de landing pages de pacotes + gerador de roteiro em PDF, com render headless.",
       "Edição de vídeo com IA: pipeline que transforma material bruto em cortes verticais (9:16) para Reels e TikTok, com decisões de corte e legenda assistidas por IA.",
@@ -786,7 +786,7 @@ export const projects: Project[] = [
       "Geração de conteúdo (LP + PDF)",
       "Editor de vídeo IA (9:16)",
     ],
-    architectureDescription: "Cada frente é um módulo independente ligado à operação existente por um padrão adapter — API onde há, automação onde não há. O ERP legado continua sendo a fonte da verdade; as camadas ao redor adicionam ingestão, distribuição e conteúdo sem substituir o sistema.",
+    architectureDescription: "Cada frente é um módulo independente ligado à operação existente por um padrão adapter. API onde há, automação onde não há. O ERP legado continua sendo a fonte da verdade; as camadas ao redor adicionam ingestão, distribuição e conteúdo sem substituir o sistema.",
     stack: [
       { category: "Ingestão / IA", items: ["Node.js", "TypeScript", "LLM (visão + texto)", "PyMuPDF"] },
       { category: "ERP / Integração", items: ["Object Pascal", "PostgreSQL", "REST / JSON", "RSA"] },
@@ -800,7 +800,7 @@ export const projects: Project[] = [
       "Geração de conteúdo e pipeline de vídeo com IA.",
     ],
     challenges: [
-      { challenge: "ERP legado sem API pública e escrita direta no banco proibida (fura regras fiscais).", solution: "Bridge na própria linguagem do ERP (Object Pascal), rodando no runtime dele — herda serial, validações e regras nativas." },
+      { challenge: "ERP legado sem API pública e escrita direta no banco proibida (fura regras fiscais).", solution: "Bridge na própria linguagem do ERP (Object Pascal), rodando no runtime dele, herda serial, validações e regras nativas." },
       { challenge: "Marketplace sem endpoint de publicação (só consumo) e auth com chave diária por RSA.", solution: "Padrão adapter (API onde há, automação HTTP onde não há) e geração/cache da chave RSA por dia." },
       { challenge: "Documentos heterogêneos: multi-idioma, PDF só-imagem, tabelas de preço densas.", solution: "Extração híbrida texto+visão por IA + validação determinística + porta de aprovação humana antes de gravar." },
     ],
@@ -825,7 +825,7 @@ export const projects: Project[] = [
     title: "SaaS multi-tenant para espaços de beleza",
     organization: "Produto próprio",
     headline: "Agendamento, gestão e atendimento por IA no WhatsApp. Cliente novo entra por configuração, não por fork.",
-    context: "Nasceu da generalização de um sistema feito para um estúdio específico, evoluído para uma base multi-tenant onde cada cliente é configuração — não fork. Cobre agendamento, gestão e um agente de IA que faz o atendimento inicial.",
+    context: "Nasceu da generalização de um sistema feito para um estúdio específico, evoluído para uma base multi-tenant onde cada cliente é configuração, não fork. Cobre agendamento, gestão e um agente de IA que faz o atendimento inicial.",
     whatIBuilt: [
       "Base multi-tenant com isolamento por organização (RLS).",
       "Módulo de agendamento e gestão do estúdio.",
@@ -1150,7 +1150,7 @@ export const projects: Project[] = [
     title: "Inbox para espelhar e controlar SDR de IA",
     organization: "Operação de Atendimento",
     headline: "Automação com freio de mão: o inbox espelha o SDR de IA e o humano assume a conversa a qualquer momento.",
-    context: "Camada de operação humana sobre um SDR de IA: um inbox (baseado em Chatwoot) que espelha as conversas do agente no WhatsApp e permite assumir/intervir quando necessário — mantendo controle humano sobre a automação.",
+    context: "Camada de operação humana sobre um SDR de IA: um inbox (baseado em Chatwoot) que espelha as conversas do agente no WhatsApp e permite assumir/intervir quando necessário, mantendo controle humano sobre a automação.",
     whatIBuilt: [
       "Inbox espelhando as conversas do agente de IA.",
       "Handoff humano (assumir/intervir na conversa).",

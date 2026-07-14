@@ -35,14 +35,14 @@ export const en = {
     about: {
       title: "About me",
       headline: "I build software focused on outcome, not just code.",
-      p1: "I'm a full stack developer with experience building robust solutions that connect product, team and business. I've evolved from developer to tech lead and project manager — which gives me a full view of the development cycle.",
+      p1: "I'm a full stack developer with experience building robust solutions that connect product, team and business. I've evolved from developer to tech lead and project manager, which gives me a full view of the development cycle.",
       p2: "I work with integration architecture, data pipelines, automation and interfaces that actually run in production. I've led projects for healthcare groups, startups and B2B operations with scale and reliability requirements.",
-      p3: "My edge is combining technical depth with clear communication — I deliver quality code and also ensure the project reaches the right outcome."
+      p3: "My edge is combining technical depth with clear communication. I deliver quality code and also ensure the project reaches the right outcome."
     },
     hero: {
       title: "Backend, integrations and data for products that need to be",
       highlight: "reliable",
-      role: "Software Engineer — architecture, pipelines, and measurable impact.",
+      role: "Software Engineer, architecture, pipelines, and measurable impact.",
       description: "I design and build APIs, pipelines and automations with focus on consistency, traceability and scale. From VTEX/CRM integrations to analytical layers in Postgres/Supabase.",
       viewProjects: "View projects",
       viewStack: "View stack"

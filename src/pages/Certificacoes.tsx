@@ -24,7 +24,6 @@ export default function Certificacoes() {
     <main className="container-page py-16 md:py-20">
       {/* Header */}
       <header className="animate-in-up">
-        <span className="section-label">// qualificações</span>
         <h1 className="section-title mt-4">Certificações</h1>
         <p className="section-subtitle mt-4">
           Nenhuma destas parou no papel. Cada uma apareceu em pelo menos um

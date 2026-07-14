@@ -15,7 +15,7 @@ function Section({
 }) {
   return (
     <section className="border-t border-border py-10">
-      {label && <span className="section-label">{label}</span>}
+      {label && <span className="font-mono-jb text-xs uppercase tracking-wider text-muted">{label}</span>}
       <h2 className="mt-3 text-xl font-semibold tracking-tight">{title}</h2>
       <div className="mt-5">{children}</div>
     </section>
@@ -27,7 +27,6 @@ function Bullets({ items }: { items: string[] }) {
     <ul className="space-y-3">
       {items.map((item, i) => (
         <li key={i} className="flex items-start gap-3 text-secondary">
-          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand" />
           <span className="leading-relaxed">{item}</span>
         </li>
       ))}
@@ -144,11 +143,11 @@ const ProjetoDetalhe = () => {
         </div>
       </Section>
 
-      {/* Por que essa stack — explicação de cada tecnologia */}
+      {/* Por que essa stack, explicação de cada tecnologia */}
       {techWhy.length > 0 && (
         <Section label="// decisões" title="Por que essa stack">
           <p className="mb-6 text-sm text-muted">
-            Cada tecnologia foi escolhida por um motivo — não por moda.
+            Cada tecnologia foi escolhida por um motivo, não por moda.
           </p>
           <div className="divide-y divide-border border-y border-border">
             {techWhy.map((t) => (

@@ -33,13 +33,13 @@ export const techRationale: TechRationale[] = [
     name: "Python",
     kind: "linguagem",
     role: "Dados, automação e IA",
-    why: "Onde a biblioteca certa é Python, uso Python — manipulação de dados, PDFs e visão computacional (PyMuPDF) têm o melhor ferramental aqui.",
+    why: "Onde a biblioteca certa é Python, uso Python, manipulação de dados, PDFs e visão computacional (PyMuPDF) têm o melhor ferramental aqui.",
   },
   {
     name: "Object Pascal",
     kind: "linguagem",
     role: "Bridge nativa dentro de um ERP legado",
-    why: "Era a linguagem do runtime proprietário do ERP. Escrever nela fez a integração herdar serial, validações e regras fiscais do sistema — sem tocar o banco diretamente.",
+    why: "Era a linguagem do runtime proprietário do ERP. Escrever nela fez a integração herdar serial, validações e regras fiscais do sistema, sem tocar o banco diretamente.",
   },
   {
     name: "SQL",
@@ -51,7 +51,7 @@ export const techRationale: TechRationale[] = [
     name: "PHP",
     kind: "linguagem",
     role: "Back-end web (Laravel)",
-    why: "Quando o contexto do cliente já é PHP/Laravel, entrego no mesmo terreno — MVC, Eloquent e filas maduras.",
+    why: "Quando o contexto do cliente já é PHP/Laravel, entrego no mesmo terreno. MVC, Eloquent e filas maduras.",
   },
 
   // ── Bancos / dados ──
@@ -65,7 +65,7 @@ export const techRationale: TechRationale[] = [
     name: "Supabase",
     kind: "banco",
     role: "Postgres gerenciado + Auth + Edge Functions",
-    why: "Entrega Postgres com RLS, autenticação e funções serverless prontos — acelera o back-end sem abrir mão de SQL puro.",
+    why: "Entrega Postgres com RLS, autenticação e funções serverless prontos, acelera o back-end sem abrir mão de SQL puro.",
   },
   {
     name: "Neon",
@@ -77,7 +77,7 @@ export const techRationale: TechRationale[] = [
     name: "Drizzle",
     kind: "banco",
     role: "ORM tipado",
-    why: "ORM fino e type-safe que gera SQL previsível — tipagem ponta a ponta sem esconder o banco.",
+    why: "ORM fino e type-safe que gera SQL previsível, tipagem ponta a ponta sem esconder o banco.",
   },
   {
     name: "dbt",
@@ -91,7 +91,7 @@ export const techRationale: TechRationale[] = [
     name: "React",
     kind: "frontend",
     role: "Camada de interface",
-    why: "Componentização madura e ecossistema — base para design systems reutilizáveis entre projetos.",
+    why: "Componentização madura e ecossistema, base para design systems reutilizáveis entre projetos.",
   },
   {
     name: "Next.js",
@@ -109,7 +109,7 @@ export const techRationale: TechRationale[] = [
     name: "shadcn/ui",
     kind: "frontend",
     role: "Componentes de UI",
-    why: "Primitivos acessíveis (Radix) que eu controlo no código — não uma lib fechada.",
+    why: "Primitivos acessíveis (Radix) que eu controlo no código, não uma lib fechada.",
   },
 
   // ── Automação / IA ──
@@ -117,13 +117,13 @@ export const techRationale: TechRationale[] = [
     name: "n8n",
     kind: "automação",
     role: "Orquestração de automações",
-    why: "Fluxos visuais versionáveis para integrar sistemas rápido, com retry e estado — sem espalhar glue-code descartável.",
+    why: "Fluxos visuais versionáveis para integrar sistemas rápido, com retry e estado, sem espalhar glue-code descartável.",
   },
   {
     name: "LLM",
     kind: "ia",
     role: "Extração e geração assistida por IA",
-    why: "Lê documentos heterogêneos (texto e imagem) e gera conteúdo — sempre atrás de validação determinística e aprovação humana.",
+    why: "Lê documentos heterogêneos (texto e imagem) e gera conteúdo, sempre atrás de validação determinística e aprovação humana.",
   },
   {
     name: "LangChain",
@@ -143,7 +143,7 @@ export const techRationale: TechRationale[] = [
     name: "REST",
     kind: "integração",
     role: "Contrato de integração",
-    why: "Contratos REST/JSON bem definidos, versionados e validados — a base previsível das integrações.",
+    why: "Contratos REST/JSON bem definidos, versionados e validados, a base previsível das integrações.",
   },
   {
     name: "Webhooks",
@@ -163,7 +163,7 @@ export const techRationale: TechRationale[] = [
     name: "Docker",
     kind: "infra",
     role: "Empacotamento e deploy",
-    why: "Ambiente reproduzível do dev à VPS — sobe igual em qualquer lugar, sem 'na minha máquina funciona'.",
+    why: "Ambiente reproduzível do dev à VPS, sobe igual em qualquer lugar, sem 'na minha máquina funciona'.",
   },
   {
     name: "Traefik",
@@ -203,7 +203,7 @@ export const techRationale: TechRationale[] = [
   },
 ];
 
-/** Acha a explicação para um item de stack — casa por inclusão e prefere o nome mais específico (mais longo), ex.: "PostgreSQL" ganha de "SQL". */
+/** Acha a explicação para um item de stack, casa por inclusão e prefere o nome mais específico (mais longo), ex.: "PostgreSQL" ganha de "SQL". */
 export function explainTech(item: string): TechRationale | undefined {
   const norm = item.toLowerCase();
   const matches = techRationale.filter((t) => norm.includes(t.name.toLowerCase()));

@@ -1,50 +1,49 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Terminal } from "@/components/Terminal";
 
-const techTags = ["TypeScript", "Node.js", "PostgreSQL", "Supabase", "Python", "n8n", "Docker"];
-
 export function Hero() {
+  const reduce = useReducedMotion();
+  const enter = (delay: number) => ({
+    initial: reduce ? false : { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] as const },
+  });
+
   return (
     <section className="container-page grid items-center gap-12 py-16 md:grid-cols-[1.05fr_1fr] md:gap-14 md:py-24">
-      <div className="animate-in-up">
-        <span className="badge-available">Disponível para projetos</span>
+      <div>
+        <motion.span className="badge-available inline-flex" {...enter(0)}>
+          Disponível para projetos
+        </motion.span>
 
-        <p className="mt-6 font-mono-jb text-sm text-muted">
-          Pedro Ventura
-        </p>
-        <h1 className="mt-3 text-[2.1rem] font-semibold leading-[1.1] tracking-tight md:text-[2.9rem]">
+        <motion.h1
+          className="mt-6 text-[2.1rem] font-semibold leading-[1.1] tracking-tight md:text-[2.9rem]"
+          {...enter(0.08)}
+        >
           Construo produtos que vão pra produção,{" "}
           <span className="text-muted">um sistema de cada vez.</span>
-        </h1>
+        </motion.h1>
 
-        <p className="section-subtitle mt-5">
-          Engenheiro de software e arquiteto de sistemas. Integração, dados e
-          IA que aguentam produção: 18 projetos entregues, de ERPs legados a
-          plataformas multi-tenant.
-        </p>
+        <motion.p className="section-subtitle mt-5" {...enter(0.16)}>
+          Arquiteto e construo sistemas de integração, dados e IA. 18 projetos
+          em produção, de ERPs legados a plataformas multi-tenant.
+        </motion.p>
 
-        <div className="mt-6 flex flex-wrap gap-2">
-          {techTags.map((t) => (
-            <span key={t} className="chip">
-              {t}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-8 flex flex-wrap gap-3">
+        <motion.div className="mt-8 flex flex-wrap gap-3" {...enter(0.24)}>
           <Link to="/trabalhos" className="btn-primary">
-            Ver trabalhos <ArrowRight size={16} />
+            Ver projetos <ArrowRight size={16} />
           </Link>
           <a href="#sobre" className="btn-ghost">
             Sobre mim
           </a>
-        </div>
+        </motion.div>
       </div>
 
-      <div className="animate-in-up" style={{ animationDelay: "0.1s" }}>
+      <motion.div {...enter(0.2)}>
         <Terminal />
-      </div>
+      </motion.div>
     </section>
   );
 }

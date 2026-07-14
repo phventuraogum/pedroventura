@@ -3,7 +3,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 import { TopNav } from "@/components/layout/TopNav";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/hooks/useTheme";
@@ -28,8 +27,7 @@ function ScrollToTop() {
 function AnimatedRoutes() {
   const location = useLocation();
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
+    <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/trabalhos" element={<Projetos />} />
         <Route path="/projetos" element={<Projetos />} />
@@ -39,8 +37,7 @@ function AnimatedRoutes() {
         <Route path="/certificacoes" element={<Certificacoes />} />
         <Route path="/contato" element={<Contato />} />
         <Route path="*" element={<NotFound />} />
-      </Routes>
-    </AnimatePresence>
+    </Routes>
   );
 }
 

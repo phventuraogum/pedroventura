@@ -2,7 +2,7 @@ import { FormEvent, useState } from "react";
 import { Github, Linkedin, Mail, MessageCircle, ArrowUpRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-/* Contatos ofuscados — montados só no clique (nada de e-mail/telefone no DOM) */
+/* Contatos ofuscados, montados só no clique (nada de e-mail/telefone no DOM) */
 const emailAddr = () => ["passisventura", "gmail.com"].join("@");
 const waNumber = () => ["55", "32", "99953", "0416"].join("");
 
@@ -57,7 +57,7 @@ const Contato = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const subject = encodeURIComponent(
-      name ? `Contato via portfólio — ${name}` : "Contato via portfólio"
+      name ? `Contato via portfólio - ${name}` : "Contato via portfólio"
     );
     const body = encodeURIComponent(message);
     window.location.href = `mailto:${emailAddr()}?subject=${subject}&body=${body}`;
@@ -75,7 +75,7 @@ const Contato = () => {
           <p className="section-subtitle mt-4">
             {t(
               "contact.subtitle",
-              "Aberto a projetos de integração, dados, automação e IA — do discovery à operação."
+              "Aberto a projetos de integração, dados, automação e IA, do discovery à operação."
             )}
           </p>
 

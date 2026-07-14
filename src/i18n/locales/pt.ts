@@ -35,14 +35,14 @@ export const pt = {
     about: {
       title: "Sobre mim",
       headline: "Construo software com foco em resultado, não apenas em código.",
-      p1: "Sou desenvolvedor full stack com experiência em construir soluções robustas que conectam produto, time e negócio. Ao longo da carreira, evoluí de desenvolvedor para tech lead e project manager — o que me dá uma visão completa do ciclo de desenvolvimento.",
+      p1: "Sou desenvolvedor full stack com experiência em construir soluções robustas que conectam produto, time e negócio. Ao longo da carreira, evoluí de desenvolvedor para tech lead e project manager, o que me dá uma visão completa do ciclo de desenvolvimento.",
       p2: "Trabalho com arquitetura de integrações, pipelines de dados, automação e interfaces que realmente funcionam em produção. Já liderei projetos para grupos de saúde, startups e operações B2B com exigências de escala e confiabilidade.",
-      p3: "Meu diferencial é unir profundidade técnica com clareza de comunicação — entrego código de qualidade e também garanto que o projeto chegue ao resultado certo."
+      p3: "Meu diferencial é unir profundidade técnica com clareza de comunicação, entrego código de qualidade e também garanto que o projeto chegue ao resultado certo."
     },
     hero: {
       title: "Backend, integrações e dados para produtos que precisam ser",
       highlight: "confiáveis",
-      role: "Software Engineer — arquitetura, pipelines e impacto mensurável.",
+      role: "Software Engineer, arquitetura, pipelines e impacto mensurável.",
       description: "Desenho e implemento APIs, pipelines e automações com foco em consistência, rastreabilidade e escala. De integrações VTEX/CRM a camadas analíticas em Postgres/Supabase.",
       viewProjects: "Ver projetos",
       viewStack: "Ver stack"

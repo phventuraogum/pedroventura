@@ -30,7 +30,7 @@ export const certifications: Certification[] = [
     level: "specialist",
     color: "#ea4b71",
     description:
-      "Especialização no nível Enterprise da plataforma n8n — focada em escalabilidade, governança e operação corporativa. Inclui domínio de SAML/SSO, LDAP, RBAC, histórico e controle de versão de fluxos, variáveis globais e deploy em Docker/Kubernetes com alta disponibilidade.",
+      "Especialização no nível Enterprise da plataforma n8n, focada em escalabilidade, governança e operação corporativa. Inclui domínio de SAML/SSO, LDAP, RBAC, histórico e controle de versão de fluxos, variáveis globais e deploy em Docker/Kubernetes com alta disponibilidade.",
     skills: ["SAML/SSO", "RBAC", "Docker/Kubernetes", "Version Control", "Self-hosted", "Governance"],
   },
   // ─── Cloud & Infra ───────────────────────────────────────────────────────
@@ -83,7 +83,7 @@ export const certifications: Certification[] = [
     level: "associate",
     color: "#e6edf3",
     description:
-      "Versionamento avançado com Git e GitHub: GitFlow, branching strategies, code review, proteção de branches e automação de pipelines CI/CD com GitHub Actions — deploy automatizado para VPS e integração cloud.",
+      "Versionamento avançado com Git e GitHub: GitFlow, branching strategies, code review, proteção de branches e automação de pipelines CI/CD com GitHub Actions, deploy automatizado para VPS e integração cloud.",
     skills: ["Git", "GitHub Actions", "CI/CD", "GitFlow", "Code Review", "Secrets Management"],
   },
   // ─── Google ───────────────────────────────────────────────────────────────
@@ -116,7 +116,7 @@ export const certifications: Certification[] = [
   // ─── Linguagens ──────────────────────────────────────────────────────────
   {
     id: "typescript",
-    name: "TypeScript — Avançado",
+    name: "TypeScript. Avançado",
     issuer: "Microsoft",
     logoUrl: "https://cdn.simpleicons.org/typescript/3178C6",
     logoBadge: "TS",
@@ -129,7 +129,7 @@ export const certifications: Certification[] = [
   },
   {
     id: "python",
-    name: "Python — Data & Automation",
+    name: "Python. Data & Automation",
     issuer: "Python Institute · Google",
     logoUrl: "https://cdn.simpleicons.org/python/3776AB",
     logoBadge: "Py",
@@ -142,7 +142,7 @@ export const certifications: Certification[] = [
   },
   {
     id: "java",
-    name: "Java — Fundamentos",
+    name: "Java. Fundamentos",
     issuer: "Oracle",
     logoUrl: "https://cdn.simpleicons.org/openjdk/ED8B00",
     logoBadge: "Java",
@@ -155,7 +155,7 @@ export const certifications: Certification[] = [
   },
   {
     id: "csharp",
-    name: "C# — .NET Fundamentals",
+    name: "C# - .NET Fundamentals",
     issuer: "Microsoft",
     logoUrl: "https://cdn.simpleicons.org/csharp/9B4F96",
     logoBadge: "C#",
@@ -168,7 +168,7 @@ export const certifications: Certification[] = [
   },
   {
     id: "css",
-    name: "CSS & Tailwind CSS — Avançado",
+    name: "CSS & Tailwind CSS. Avançado",
     issuer: "W3C · Tailwind Labs",
     logoUrl: "https://cdn.simpleicons.org/tailwindcss/38BDF8",
     logoBadge: "CSS",
@@ -195,7 +195,7 @@ export const certifications: Certification[] = [
   },
   {
     id: "postgresql",
-    name: "PostgreSQL — Database Engineering",
+    name: "PostgreSQL. Database Engineering",
     issuer: "PostgreSQL Global Development Group",
     logoUrl: "https://cdn.simpleicons.org/postgresql/336791",
     logoBadge: "PG",
@@ -208,7 +208,7 @@ export const certifications: Certification[] = [
   },
   {
     id: "supabase",
-    name: "Supabase — Backend as a Service",
+    name: "Supabase. Backend as a Service",
     issuer: "Supabase Inc.",
     logoUrl: "https://cdn.simpleicons.org/supabase/3ECF8E",
     logoBadge: "SB",

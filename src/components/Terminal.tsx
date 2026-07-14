@@ -19,7 +19,7 @@ const RESPONSES: Record<string, string[]> = {
   sobre: [
     "O que a proposta promete é o que roda em produção.",
     "Arquiteto SaaS multi-tenant, agentes de IA (OpenAI, Anthropic, LangChain)",
-    "e integrações com CRMs B2B — automação que não quebra no terceiro mês.",
+    "e integrações com CRMs B2B, automação que não quebra no terceiro mês.",
   ],
   stack: [
     "backend    Node.js · TypeScript · Python · APIs REST · Webhooks",
@@ -36,7 +36,7 @@ const RESPONSES: Record<string, string[]> = {
     "→ digite 'projetos' e navegue em /trabalhos",
   ],
   certs: ["15 certificações · n8n · AWS · Docker · Google IT · TypeScript · SQL · PostgreSQL…"],
-  contato: ["linkedin · github · email — veja /contato"],
+  contato: ["linkedin · github · email, veja /contato"],
 };
 
 export function Terminal() {
@@ -68,7 +68,7 @@ export function Terminal() {
     if (RESPONSES[cmd]) {
       next.push(...RESPONSES[cmd].map((t) => ({ type: "out" as const, text: t })));
     } else {
-      next.push({ type: "out", text: `comando não encontrado: ${cmd} — tente 'help'` });
+      next.push({ type: "out", text: `comando não encontrado: ${cmd}, tente 'help'` });
     }
     setLines((l) => [...l, ...next]);
   };
@@ -107,7 +107,7 @@ export function Terminal() {
         <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#cfccc2" }} />
         <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#cfccc2" }} />
         <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#cfccc2" }} />
-        <span className="terminal-dim ml-2 text-xs">pedro@ventura — bash</span>
+        <span className="terminal-dim ml-2 text-xs">pedro@ventura - bash</span>
       </div>
 
       <div ref={bodyRef} className="max-h-[260px] min-h-[200px] overflow-y-auto px-4 py-3.5">

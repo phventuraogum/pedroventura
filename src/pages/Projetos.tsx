@@ -39,7 +39,6 @@ const Projetos = () => {
     <main className="container-page py-16 md:py-20">
       {/* Header */}
       <header className="animate-in-up">
-        <span className="section-label">// trabalhos</span>
         <h1 className="section-title mt-4">Projetos entregues</h1>
         <p className="section-subtitle mt-4">
           {projects.length} sistemas que rodaram ou rodam em produção. Nomes de
