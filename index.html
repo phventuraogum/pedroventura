@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" class="light">
+<html lang="pt-BR" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -9,33 +9,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO -->
-    <title>Pedro Ventura</title>
-    <meta name="description" content="Engenheiro de software e arquiteto de sistemas. 18 projetos em produção: integração, dados e IA, de ERPs legados a plataformas multi-tenant." />
+    <title>Pedro Ventura · Engenheiro de Software e Arquiteto de Sistemas</title>
+    <meta name="description" content="Construo sistemas que vão pra produção: integração, dados e IA. Projetos entregues para MRV, Fleury, Butiá e outras operações, de ERPs legados a plataformas multi-tenant." />
     <meta name="author" content="Pedro Ventura" />
-    <meta name="keywords" content="CTO, tech lead, software engineer, backend, integrações, dados, IA, multi-tenant, RLS, PostgreSQL, Supabase, n8n, TypeScript" />
-    <link rel="canonical" href="https://pedroventura.dev/" />
+    <meta name="keywords" content="CTO, tech lead, engenheiro de software, backend, integrações, dados, IA, multi-tenant, RLS, PostgreSQL, Supabase, n8n, TypeScript" />
+    <link rel="canonical" href="https://pedroventura-nine.vercel.app/" />
+    <meta name="theme-color" content="#0d0b09" />
 
     <!-- Open Graph -->
     <meta property="og:type"        content="website" />
-    <meta property="og:url"         content="https://pedroventura.dev/" />
+    <meta property="og:url"         content="https://pedroventura-nine.vercel.app/" />
     <meta property="og:locale"      content="pt_BR" />
-    <meta property="og:title"       content="Pedro Ventura" />
-    <meta property="og:description" content="Construo sistemas que aguentam produção: integração, dados e IA. 18 projetos entregues em 8 setores." />
-    <meta property="og:image"       content="https://pedroventura-nine.vercel.app/pedro.jpg" />
+    <meta property="og:site_name"   content="Pedro Ventura" />
+    <meta property="og:title"       content="Pedro Ventura · Engenheiro de Software e Arquiteto de Sistemas" />
+    <meta property="og:description" content="Construo sistemas que vão pra produção: integração, dados e IA. Projetos entregues para MRV, Fleury, Butiá e outras operações." />
+    <meta property="og:image"       content="https://pedroventura-nine.vercel.app/og-image.jpg" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
-    <meta name="twitter:card"        content="summary" />
-    <meta name="twitter:title"       content="Pedro Ventura" />
-    <meta name="twitter:description" content="Construo sistemas que aguentam produção: integração, dados e IA." />
-    <meta name="twitter:image"       content="https://pedroventura-nine.vercel.app/pedro.jpg" />
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content="Pedro Ventura · Engenheiro de Software e Arquiteto de Sistemas" />
+    <meta name="twitter:description" content="Construo sistemas que vão pra produção: integração, dados e IA." />
+    <meta name="twitter:image"       content="https://pedroventura-nine.vercel.app/og-image.jpg" />
 
     <!-- Fonts: Geist Sans + JetBrains Mono, self-hosted via @fontsource (importadas no main.tsx) -->
 
-    <!-- Theme: evita flash — lê a preferência salva (default light) -->
+    <!-- Theme: evita flash — lê a preferência salva (default dark) -->
     <script>
       (function() {
         var stored = localStorage.getItem('portfolio-theme');
-        var theme = (stored === 'light' || stored === 'dark') ? stored : 'light';
+        var theme = (stored === 'light' || stored === 'dark') ? stored : 'dark';
         document.documentElement.classList.remove('light', 'dark');
         document.documentElement.classList.add(theme);
       })();

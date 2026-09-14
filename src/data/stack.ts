@@ -8,6 +8,20 @@ export interface StackCategory {
 
 export const stackCategories: StackCategory[] = [
   {
+    id: "ia",
+    title: "Engenharia de IA",
+    description: "Agentes, LLMs e RAG que saem do protótipo e passam a rodar com custo e latência sob controle.",
+    technologies: ["LLMs (OpenAI, Anthropic)", "Agentes", "RAG", "LangChain", "Embeddings", "Function calling"],
+    practices: [
+      "Orquestração de agentes com papéis e ferramentas",
+      "RAG com recuperação avaliada, não no chute",
+      "Guardrails e validação de saída",
+      "Avaliação de modelo (evals) antes de trocar",
+      "Controle de custo e tokens por rota",
+      "Observabilidade de prompt, contexto e resposta"
+    ]
+  },
+  {
     id: "backend",
     title: "Backend e Integrações",
     description: "APIs robustas e integrações confiáveis com foco em consistência e rastreabilidade.",
@@ -51,8 +65,8 @@ export const stackCategories: StackCategory[] = [
   },
   {
     id: "frontend",
-    title: "Frontend (Suporte)",
-    description: "Interfaces para consumo de dados e operação, com foco em usabilidade.",
+    title: "Frontend",
+    description: "Interfaces para operar e consumir os sistemas, com foco em clareza e usabilidade.",
     technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
     practices: [
       "Componentes reutilizáveis",

@@ -3,95 +3,116 @@
 @tailwind utilities;
 
 /*
-  Design System — Pedro Ventura Portfolio (v2)
-  Direção: "Sidnei Pacheco" adaptado — light minimalista, hacker-clean.
-  Neutros quentes + acento verde técnico. Light default, dark com toggle.
+  Design System — Pedro Ventura Portfolio (v3 "Ember")
+  Direção: premium escuro, editorial. Preto quente + branco + vermelho controlado + marrom/terra.
+  Dark é o carro-chefe. Light existe como alternativa creme/terra.
+  Regra de acento: vermelho é respiro, não decoração. Usar com parcimônia.
 */
 
 @layer base {
+  /* ============ DARK (padrão) ============ */
   :root,
-  .light {
-    /* Surfaces (warm neutrals) */
-    --background: 48 33% 98%;        /* #fbfaf7 — off-white quente */
-    --foreground: 60 17% 7%;         /* #15150f — quase preto */
-    --card: 0 0% 100%;               /* #ffffff */
-    --card-foreground: 60 17% 7%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 60 17% 7%;
+  .dark {
+    /* Surfaces — preto quente com base marrom */
+    --background: 24 14% 5%;         /* #0d0b09 preto quente */
+    --foreground: 40 30% 94%;        /* #f4f0e8 branco quente */
+    --card: 26 12% 8%;               /* #17130f */
+    --card-foreground: 40 30% 94%;
+    --popover: 26 12% 8%;
+    --popover-foreground: 40 30% 94%;
 
-    /* Primary = near-black (botões sólidos) */
-    --primary: 60 17% 7%;
-    --primary-foreground: 48 33% 98%;
+    /* Primary = branco quente (botões claros sobre preto) */
+    --primary: 40 30% 94%;
+    --primary-foreground: 24 14% 5%;
 
-    --secondary: 48 24% 94%;         /* #f4f2ec */
-    --secondary-foreground: 49 7% 32%;
-    --muted: 48 24% 94%;
-    --muted-foreground: 51 5% 52%;   /* #8a887d */
+    --secondary: 28 12% 12%;         /* #221c16 marrom escuro */
+    --secondary-foreground: 38 18% 72%;
+    --muted: 28 12% 12%;
+    --muted-foreground: 34 10% 56%;  /* #948b7e taupe */
 
-    /* Accent = hover/surface neutra (verde fica só no --brand, intencional) */
-    --accent: 48 24% 94%;
-    --accent-foreground: 60 17% 7%;
+    --accent: 28 14% 14%;            /* hover surface */
+    --accent-foreground: 40 30% 94%;
 
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 4 74% 52%;
+    --destructive-foreground: 40 30% 94%;
 
-    --border: 48 20% 90%;            /* #eae8e0 */
-    --input: 48 20% 90%;
-    --ring: 150 80% 35%;
+    --border: 28 12% 15%;            /* #2a231c */
+    --input: 28 12% 15%;
+    --ring: 6 78% 52%;
 
     --radius: 0.625rem;
 
     /* Custom tokens */
-    --surface-1: 0 0% 100%;
-    --surface-2: 48 24% 94%;
-    --border-strong: 48 16% 84%;     /* #dcdad2 */
-    --brand: 150 80% 35%;
-    --brand-foreground: 0 0% 100%;
-    --brand-soft: 150 80% 35%;       /* usar com /0.10 */
-    --text-secondary: 49 7% 32%;
-    --text-muted: 51 5% 52%;
+    --surface-1: 26 12% 8%;          /* card */
+    --surface-2: 28 12% 12%;         /* raised */
+    --border-strong: 28 12% 22%;     /* #40352a */
 
-    /* Terminal (constante nos dois modos) */
-    --term-bg: 60 12% 9%;            /* #1a1a17 */
-    --term-fg: 48 8% 76%;
-    --term-green: 152 82% 46%;       /* #12d67e */
-    --term-dim: 49 6% 44%;
+    /* Vermelho ember — o acento (usar com parcimônia) */
+    --brand: 6 78% 52%;              /* #e33124 vermelho vivo controlado */
+    --brand-foreground: 40 30% 96%;
+    --brand-deep: 6 70% 42%;         /* #b52a1f borgonha */
+    --brand-soft: 6 78% 52%;         /* usar com /0.10-0.16 */
+
+    /* Marrom/terra — neutro quente de destaque */
+    --clay: 22 34% 44%;              /* #96603f terracota queimada */
+    --clay-soft: 22 40% 30%;
+
+    --text-secondary: 38 16% 74%;    /* #c4bbaa */
+    --text-muted: 34 10% 56%;
+
+    /* Terminal */
+    --term-bg: 26 14% 6%;
+    --term-fg: 38 14% 78%;
+    --term-green: 6 82% 58%;         /* prompt em vermelho ember, não verde */
+    --term-dim: 34 8% 46%;
   }
 
-  .dark {
-    --background: 60 8% 5%;          /* #0d0d0b */
-    --foreground: 51 24% 92%;        /* #f0efe8 */
-    --card: 60 7% 8%;                /* #161613 */
-    --card-foreground: 51 24% 92%;
-    --popover: 60 7% 8%;
-    --popover-foreground: 51 24% 92%;
+  /* ============ LIGHT (alternativa creme/terra) ============ */
+  .light {
+    --background: 40 34% 96%;        /* #f6f1e8 creme */
+    --foreground: 24 22% 10%;        /* #1f1712 */
+    --card: 40 40% 99%;
+    --card-foreground: 24 22% 10%;
+    --popover: 40 40% 99%;
+    --popover-foreground: 24 22% 10%;
 
-    --primary: 51 24% 92%;           /* near-white → botões claros */
-    --primary-foreground: 60 8% 5%;
+    --primary: 24 22% 10%;
+    --primary-foreground: 40 34% 96%;
 
-    --secondary: 60 8% 11%;          /* #1d1d19 */
-    --secondary-foreground: 48 8% 63%;
-    --muted: 60 8% 11%;
-    --muted-foreground: 49 6% 41%;
+    --secondary: 38 26% 91%;         /* #ece4d6 */
+    --secondary-foreground: 26 14% 30%;
+    --muted: 38 26% 91%;
+    --muted-foreground: 30 10% 44%;
 
-    --accent: 60 8% 13%;
-    --accent-foreground: 51 24% 92%;
+    --accent: 38 26% 91%;
+    --accent-foreground: 24 22% 10%;
 
-    --destructive: 0 62% 50%;
-    --destructive-foreground: 51 24% 92%;
+    --destructive: 4 74% 48%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 60 10% 14%;            /* #26261f */
-    --input: 60 10% 14%;
-    --ring: 152 85% 45%;
+    --border: 38 22% 86%;
+    --input: 38 22% 86%;
+    --ring: 6 74% 48%;
 
-    --surface-1: 60 7% 8%;
-    --surface-2: 60 8% 11%;
-    --border-strong: 51 11% 18%;     /* #333329 */
-    --brand: 152 85% 45%;
-    --brand-foreground: 60 8% 5%;
-    --brand-soft: 152 85% 45%;
-    --text-secondary: 48 8% 63%;
-    --text-muted: 49 6% 41%;
+    --surface-1: 40 40% 99%;
+    --surface-2: 38 26% 91%;
+    --border-strong: 36 18% 78%;
+
+    --brand: 6 74% 48%;              /* vermelho um pouco mais fechado no claro */
+    --brand-foreground: 0 0% 100%;
+    --brand-deep: 6 68% 40%;
+    --brand-soft: 6 74% 48%;
+
+    --clay: 22 40% 40%;
+    --clay-soft: 22 44% 34%;
+
+    --text-secondary: 26 14% 30%;
+    --text-muted: 30 10% 44%;
+
+    --term-bg: 26 14% 6%;
+    --term-fg: 38 14% 78%;
+    --term-green: 6 82% 58%;
+    --term-dim: 34 8% 46%;
   }
 }
 
@@ -99,8 +120,8 @@
   * { @apply border-border; }
 
   html { scroll-behavior: smooth; }
-  html.light { background-color: hsl(48 33% 98%); }
-  html.dark  { background-color: hsl(60 8% 5%); }
+  html.dark  { background-color: hsl(24 14% 5%); }
+  html.light { background-color: hsl(40 34% 96%); }
 
   body {
     @apply bg-background text-foreground antialiased;
@@ -110,15 +131,18 @@
     text-rendering: optimizeLegibility;
   }
 
+  /* Títulos finos e apertados = leitura premium */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
-    letter-spacing: -0.025em;
+    @apply tracking-tight;
+    font-weight: 500;
+    letter-spacing: -0.03em;
   }
 
   code, pre, kbd { font-family: 'JetBrains Mono', monospace; }
 
   ::selection {
-    background: hsl(var(--brand) / 0.2);
+    background: hsl(var(--brand) / 0.28);
+    color: hsl(var(--foreground));
   }
 }
 
@@ -127,65 +151,89 @@
   .container-page {
     @apply mx-auto w-full max-w-5xl px-6 md:px-8;
   }
+  .container-wide {
+    @apply mx-auto w-full max-w-6xl px-6 md:px-8;
+  }
 
   /* ── Section rhythm ── */
   .section-title {
-    @apply font-semibold;
-    font-size: clamp(1.6rem, 3.5vw, 2.25rem);
-    letter-spacing: -0.03em;
-    line-height: 1.15;
+    font-weight: 400;
+    font-size: clamp(1.8rem, 4vw, 2.75rem);
+    letter-spacing: -0.035em;
+    line-height: 1.08;
   }
 
   .section-subtitle {
     @apply text-base leading-relaxed;
     color: hsl(var(--text-secondary));
-    max-width: 40rem;
+    max-width: 42rem;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 text-xs uppercase;
+    color: hsl(var(--text-muted));
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.18em;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply inline-block h-px w-6;
+    background: hsl(var(--brand));
   }
 
   /* ── Availability badge ── */
   .badge-available {
-    @apply inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest;
+    @apply inline-flex items-center gap-2 text-xs font-medium uppercase;
     color: hsl(var(--brand));
     font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
   }
-
   .badge-available::before {
     content: '';
     @apply inline-block h-1.5 w-1.5 rounded-full;
     background: hsl(var(--brand));
-    box-shadow: 0 0 0 3px hsl(var(--brand) / 0.18);
+    box-shadow: 0 0 0 3px hsl(var(--brand) / 0.2);
   }
 
   /* ── Buttons ── */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-all;
     background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
-    box-shadow: 0 1px 2px hsl(var(--foreground) / 0.08);
   }
   .btn-primary:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 14px hsl(var(--foreground) / 0.14);
+    box-shadow: 0 8px 24px hsl(0 0% 0% / 0.4);
+  }
+
+  /* Botão vermelho ember, para o CTA principal quando quiser peso */
+  .btn-brand {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-all;
+    background: hsl(var(--brand));
+    color: hsl(var(--brand-foreground));
+  }
+  .btn-brand:hover {
+    background: hsl(var(--brand-deep));
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px hsl(var(--brand) / 0.32);
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors;
     border: 1px solid hsl(var(--border-strong));
     color: hsl(var(--foreground));
-    background: hsl(var(--surface-1));
+    background: transparent;
   }
   .btn-ghost:hover {
     background: hsl(var(--surface-2));
     border-color: hsl(var(--muted-foreground) / 0.4);
   }
 
-  /* Link com seta/underline sutil */
   .link-arrow {
     @apply inline-flex items-center gap-1.5 text-sm font-medium transition-colors;
     color: hsl(var(--brand));
   }
-  .link-arrow:hover { opacity: 0.8; }
+  .link-arrow:hover { opacity: 0.82; }
 
   /* ── Chips ── */
   .chip {
@@ -198,13 +246,14 @@
 
   /* ── Cards ── */
   .card-base {
-    @apply rounded-xl border p-6 transition-all duration-200;
+    @apply rounded-xl border p-6 transition-all duration-300;
     background: hsl(var(--surface-1));
     border-color: hsl(var(--border));
   }
   .card-base:hover {
-    border-color: hsl(var(--border-strong));
+    border-color: hsl(var(--brand) / 0.4);
     transform: translateY(-2px);
+    box-shadow: 0 12px 32px hsl(0 0% 0% / 0.35);
   }
 
   /* ── Terminal ── */
@@ -217,6 +266,9 @@
   .terminal-prompt { color: hsl(var(--term-green)); }
   .terminal-dim    { color: hsl(var(--term-dim)); }
   .terminal-fg     { color: hsl(var(--term-fg)); }
+
+  /* Divisória de seção com respiro */
+  .section-divide { border-top: 1px solid hsl(var(--border)); }
 }
 
 @layer utilities {
@@ -225,9 +277,18 @@
   .text-secondary { color: hsl(var(--text-secondary)); }
   .text-muted { color: hsl(var(--text-muted)); }
   .text-brand { color: hsl(var(--brand)); }
+  .text-clay { color: hsl(var(--clay)); }
+  .border-brand { border-color: hsl(var(--brand)); }
   .font-mono-jb { font-family: 'JetBrains Mono', monospace; }
 
-  .animate-in-up { animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  /* Textura de brilho ember para heros/faixas */
+  .ember-glow {
+    background:
+      radial-gradient(60% 50% at 15% 0%, hsl(var(--brand) / 0.12), transparent 70%),
+      radial-gradient(50% 60% at 100% 20%, hsl(var(--clay) / 0.10), transparent 70%);
+  }
+
+  .animate-in-up { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
   @keyframes slideUp {
     from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }

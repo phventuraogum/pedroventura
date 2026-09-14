@@ -1,60 +1,57 @@
+import { Reveal } from "@/components/Reveal";
+
 const stats = [
   { value: "5+", label: "anos em tecnologia" },
-  { value: "18", label: "projetos entregues" },
-  { value: "10+", label: "clientes, em 8 setores" },
+  { value: "18", label: "sistemas entregues" },
+  { value: "10+", label: "clientes em 8 setores" },
   { value: "6", label: "arquiteturas autorais" },
 ];
 
 export function About() {
   return (
-    <section id="sobre" className="border-t border-border">
-      <div className="container-page py-16 md:py-24">
-        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr] md:gap-16">
-          <div>
-            <h2 className="section-title">
-              O que a proposta promete é o que roda em produção.
-            </h2>
-            <div className="section-subtitle mt-5 space-y-4">
+    <section id="sobre" className="section-divide">
+      <div className="container-wide py-16 md:py-24">
+        <div className="max-w-2xl">
+          <Reveal>
+            <p className="eyebrow">Sobre</p>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <h2 className="section-title mt-5">Quem sou</h2>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <div className="mt-6 space-y-4 text-[1.05rem] leading-relaxed text-secondary">
               <p>
-                Minha especialidade é pegar o sistema que só existe em proposta
-                e fazer ele rodar: agente com latência real, pipeline limpo,
-                automação que não quebra no terceiro mês, arquitetura que escala
-                sem reescrita.
+                Sou o Pedro. Trabalho com software há mais de cinco anos e
+                gosto mesmo é de ver um sistema no ar, sendo usado.
               </p>
               <p>
-                Cheguei aqui por camadas: integração de sistemas, automação,
-                engenharia de dados, arquitetura e liderança técnica. Hoje ocupo
-                cadeira de CTO numa operação B2B com IA, e sigo com a mão no
-                código todos os dias.
+                Hoje meu foco é engenharia de IA: agentes, LLMs, RAG e
+                pipelines que colocam modelo pra trabalhar de verdade, com
+                latência, custo e confiabilidade sob controle. Isso apoiado
+                numa base forte de engenharia de software, backend, dados e
+                integração entre sistemas.
               </p>
               <p>
-                No dia a dia: desenho arquiteturas SaaS multi-tenant do zero,
-                projeto agentes de IA (OpenAI, Anthropic, LangChain), integro
-                CRMs e ERPs que nem API têm, e decido os trade-offs que afetam
-                margem e entrega.
+                Sou CTO numa operação de IA e continuo programando todo dia.
+                Se você tem um problema de verdade pra resolver com IA, me
+                chama que eu te falo se consigo ajudar.
               </p>
             </div>
-          </div>
-
-          <div className="self-start md:border-l md:border-border md:pl-10">
-            <img
-              src="/pedro.jpg"
-              alt="Pedro Ventura"
-              width={800}
-              height={800}
-              loading="lazy"
-              className="mb-8 w-full max-w-[240px] rounded-xl border border-border"
-            />
-            <dl className="grid grid-cols-2 gap-6 md:grid-cols-1 md:gap-7">
-              {stats.map((s) => (
-                <div key={s.label}>
-                  <dt className="text-3xl font-semibold tracking-tight">{s.value}</dt>
-                  <dd className="mt-1 text-sm text-muted">{s.label}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+          </Reveal>
         </div>
+
+        <Reveal delay={0.18}>
+          <dl className="mt-14 grid grid-cols-2 gap-8 border-t border-border pt-10 md:grid-cols-4">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <dt className="text-4xl font-medium tracking-tight md:text-5xl">
+                  {s.value}
+                </dt>
+                <dd className="mt-2 text-sm text-muted">{s.label}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
       </div>
     </section>
   );
