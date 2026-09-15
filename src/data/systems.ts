@@ -1,17 +1,21 @@
 /**
  * Sistemas Selecionados — os projetos mais complexos, apresentados como cases de arquitetura.
  * Conteúdo separado da apresentação (este arquivo é a fonte).
- * caseSlug aponta para a página de case study quando existir (senão fica null).
+ *
+ * flow: cada item é uma camada do diagrama vertical.
+ *   - string  → um nó único, centralizado
+ *   - string[] → uma linha de nós paralelos (fan-out), ex.: ["IA", "REGRAS", "TOOLS"]
  */
 export interface SelectedSystem {
-  index: string;         // "01"
-  kind: string;          // "HOMOLOGAÇÃO COM IA"
-  title: string;         // "Homologação de negócio automatizada"
-  org: string;           // cliente / contexto
-  summary: string;       // 1-2 linhas
-  roles: string[];       // ["Arquitetura", "IA", "Backend"]
-  flow: string[];        // camadas verticais do diagrama
-  stack: string[];       // tecnologias-chave
+  index: string;                 // "01"
+  kind: string;                  // "SISTEMA DE IA"
+  title: string;                 // "SDR de IA para operação B2B"
+  org: string;                   // cliente / contexto
+  summary: string;               // descrição curta
+  roles: string[];               // ["Arquitetura", "IA", "Backend"]
+  flow: (string | string[])[];   // diagrama de arquitetura
+  status: string;                // "Sistema em produção"
+  year: string;                  // "2026"
   caseSlug: string | null;
 }
 
@@ -22,16 +26,16 @@ export const selectedSystems: SelectedSystem[] = [
     title: "Homologação de negócio automatizada",
     org: "MRV",
     summary:
-      "Agentes de IA entram nos sistemas, executam o cenário como o usuário faria, conferem o resultado contra o critério de aceite e abrem card com evidência quando algo falha. O gargalo de QA de negócio deixa de travar a esteira.",
+      "Agentes de IA entram nos sistemas, executam o cenário como o usuário faria, conferem o resultado contra o critério de aceite e abrem card com evidência quando algo falha. O QA de negócio deixa de travar a esteira.",
     roles: ["Arquitetura", "IA", "Automação de browser"],
     flow: [
-      "Cenário + critério de aceite",
-      "Orquestrador de agentes",
-      "Execução em tela (browser)",
-      "Verificação do resultado",
-      "Relatório + card no Azure DevOps",
+      "CENÁRIO + CRITÉRIO",
+      "ORQUESTRADOR",
+      ["AGENTE", "EXECUÇÃO", "VERIFICAÇÃO"],
+      "RELATÓRIO + CARD",
     ],
-    stack: ["Agentes de IA", "Playwright", "Automação de browser", "Azure DevOps"],
+    status: "Em produção",
+    year: "2026",
     caseSlug: "homologacao-mrv",
   },
   {
@@ -40,16 +44,17 @@ export const selectedSystems: SelectedSystem[] = [
     title: "ERP completo para retífica",
     org: "Favarini · Retífica Formiguense",
     summary:
-      "O miolo da operação num sistema só: PCP, compras, estoque, financeiro, fiscal, comissões e ponto, com IA embarcada. Rodando em produção, com quatro CNPJs e centenas de entregas no histórico.",
+      "O miolo da operação num sistema só: PCP, compras, estoque, financeiro, fiscal, comissões e ponto, com IA embarcada. Rodando em produção, com quatro CNPJs na mesma base.",
     roles: ["Arquitetura", "Full Stack", "Liderança técnica"],
     flow: [
-      "PCP / Compras / Estoque",
-      "Financeiro / Fiscal",
-      "Comissões / Ponto",
-      "IA embarcada",
-      "Multi-CNPJ (produção)",
+      "OPERAÇÃO",
+      ["PCP", "ESTOQUE", "COMPRAS"],
+      "NÚCLEO ERP",
+      ["FINANCEIRO", "FISCAL", "COMISSÕES"],
+      "BASE MULTI-CNPJ",
     ],
-    stack: ["Next.js", "TypeScript", "PostgreSQL", "Supabase", "Docker"],
+    status: "Em produção",
+    year: "2026",
     caseSlug: "erp-retifica",
   },
   {
@@ -61,13 +66,13 @@ export const selectedSystems: SelectedSystem[] = [
       "Camada de integração que faz cada evento contar exatamente uma vez, com trilha de auditoria completa. Idempotência, reprocesso seguro e uma base analítica estável pra operação digital.",
     roles: ["Arquitetura", "Backend", "Dados"],
     flow: [
-      "VTEX (APIs + webhooks)",
-      "Integração (contratos + idempotência)",
-      "Persistência + auditoria",
-      "Reprocesso e reconciliação",
-      "Views analíticas",
+      "VTEX (APIs + WEBHOOKS)",
+      "INTEGRAÇÃO (IDEMPOTÊNCIA)",
+      ["PERSISTÊNCIA", "AUDITORIA", "RECONCILIAÇÃO"],
+      "VIEWS ANALÍTICAS",
     ],
-    stack: ["APIs REST", "Webhooks", "PostgreSQL", "SQL", "Observabilidade"],
+    status: "Em produção",
+    year: "2025",
     caseSlug: "integracao-saude-vtex",
   },
   {
@@ -76,16 +81,17 @@ export const selectedSystems: SelectedSystem[] = [
     title: "Base de dados e IA para gestora",
     org: "Gestora de investimentos regulada",
     summary:
-      "Desenho da arquitetura back-end primeiro: uma fonte única normalizada alimentando os apps existentes, com RAG citado, zonas de dado por sensibilidade e governança pensada pra ambiente regulado.",
+      "Arquitetura back-end primeiro: uma fonte única normalizada alimentando os apps existentes, com RAG citado, zonas de dado por sensibilidade e governança pensada pra ambiente regulado.",
     roles: ["Arquitetura", "IA", "Dados"],
     flow: [
-      "Experiências (chat / CRM / dashboards)",
-      "Orquestração + aprovação humana",
-      "Conhecimento, memória e tools",
-      "Dados, identidade e segurança",
-      "Observabilidade e governança",
+      "EXPERIÊNCIAS (CHAT · CRM · BI)",
+      "ORQUESTRAÇÃO + APROVAÇÃO",
+      ["RAG CITADO", "MEMÓRIA", "TOOLS"],
+      "FONTE ÚNICA (DADOS)",
+      "GOVERNANÇA + ZONAS",
     ],
-    stack: ["PostgreSQL", "RAG", "LLMs", "Zonas de dado", "Governança"],
+    status: "Arquitetura entregue",
+    year: "2025",
     caseSlug: "dados-ia-gestora",
   },
 ];

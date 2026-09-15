@@ -12,10 +12,10 @@ export function SelectedSystems() {
         <SectionHeader
           index="01"
           label="Sistemas selecionados"
-          title="Sistemas que desenhei e coloquei no ar, não telas soltas."
+          title="Sistemas que desenhei e coloquei no ar."
         />
 
-        <div className="mt-10">
+        <div className="mt-8 md:mt-10">
           {selectedSystems.map((s) => (
             <SystemCard key={s.index} system={s} />
           ))}
