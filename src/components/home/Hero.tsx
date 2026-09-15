@@ -1,68 +1,91 @@
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import { ArrowDown, Github, Linkedin, ArrowUpRight } from "lucide-react";
+import { HeroHeadline } from "@/components/hero/HeroHeadline";
+import { HeroStatus } from "@/components/hero/HeroStatus";
+import { HeroArchitecture } from "@/components/hero/HeroArchitecture";
+import { TechStrip } from "@/components/hero/TechStrip";
+import { StatusDot } from "@/components/ui/StatusDot";
 
 export function Hero() {
   const reduce = useReducedMotion();
-  const enter = (delay: number) => ({
-    initial: reduce ? false : { opacity: 0, y: 20 },
+  const fade = (delay: number) => ({
+    initial: reduce ? false : { opacity: 0, y: 12 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { duration: 0.55, delay, ease: [0.2, 0.8, 0.2, 1] as const },
   });
 
   return (
-    <section className="ember-glow">
-      <div className="container-wide grid items-center gap-12 pb-14 pt-16 md:grid-cols-[1.15fr_0.85fr] md:gap-16 md:pb-20 md:pt-24">
-        <div>
-          <motion.span className="badge-available" {...enter(0)}>
-            Disponível para novos projetos
-          </motion.span>
+    <section className="relative overflow-hidden">
+      {/* Grid técnico de fundo */}
+      <div className="tech-grid pointer-events-none absolute inset-0" aria-hidden="true" />
+      <HeroArchitecture />
 
-          <motion.h1
-            className="mt-7 text-[2.4rem] leading-[1.02] md:text-[3.6rem]"
-            style={{ letterSpacing: "-0.04em", fontWeight: 400 }}
-            {...enter(0.08)}
-          >
-            Engenharia de IA
-            <br />
-            <span className="text-clay">que chega em produção.</span>
-          </motion.h1>
+      <div className="container-wide relative flex min-h-[calc(100vh-72px)] flex-col justify-center py-16 md:py-20">
+        {/* Meta row */}
+        <motion.div className="flex items-start justify-between gap-4" {...fade(0)}>
+          <div className="eyebrow flex-col items-start gap-1 before:hidden">
+            <span>AI Systems Architect</span>
+            <span className="text-foreground-muted/70">CTO · Product Builder</span>
+          </div>
+          <span className="badge-available">
+            <StatusDot />
+            Available · BR
+          </span>
+        </motion.div>
 
-          <motion.p
-            className="section-subtitle mt-6 text-[1.05rem]"
-            {...enter(0.16)}
-          >
-            Construo agentes, LLMs e pipelines de IA que saem do protótipo e
-            passam a rodar de verdade, com latência, custo e confiabilidade sob
-            controle. Sobre uma base sólida de engenharia de software.
-          </motion.p>
+        {/* Main grid — eyebrow perto da headline (mt menor) */}
+        <div className="mt-7 grid min-w-0 grid-cols-1 gap-10 md:mt-9 lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-20">
+          <div className="flex min-w-0 flex-col">
+            <HeroHeadline />
 
-          <motion.div className="mt-9 flex flex-wrap items-center gap-3" {...enter(0.24)}>
-            <Link to="/trabalhos" className="btn-brand">
-              Ver projetos <ArrowRight size={16} />
-            </Link>
-            <Link to="/contato" className="btn-ghost">
-              Falar comigo
-            </Link>
+            <motion.p
+              className="type-body-lg mt-7 max-w-[560px] text-foreground-secondary"
+              {...fade(0.4)}
+            >
+              I design and ship AI-native systems across software, data and
+              infrastructure, from business constraints to production.
+            </motion.p>
+
+            <motion.div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4" {...fade(0.48)}>
+              <a href="#systems" className="btn-primary group">
+                Explore systems
+                <ArrowDown size={16} className="transition-transform group-hover:translate-y-0.5" />
+              </a>
+              <a
+                href="https://github.com/phventuraogum"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-arrow group"
+              >
+                <Github size={15} /> GitHub
+                <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/phventura/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-arrow group"
+              >
+                <Linkedin size={15} /> LinkedIn
+                <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </motion.div>
+          </div>
+
+          <motion.div className="lg:pt-2" {...fade(0.3)}>
+            <HeroStatus />
           </motion.div>
         </div>
 
-        <motion.div className="relative mx-auto w-full max-w-[380px]" {...enter(0.2)}>
-          <div
-            className="absolute -inset-4 -z-10 rounded-3xl opacity-60 blur-2xl"
-            style={{
-              background:
-                "radial-gradient(60% 60% at 70% 20%, hsl(var(--brand) / 0.28), transparent 70%)",
-            }}
-          />
-          <img
-            src="/pedro.jpg"
-            alt="Pedro Ventura"
-            width={760}
-            height={900}
-            className="w-full rounded-2xl border border-border-strong object-cover"
-            style={{ aspectRatio: "4 / 5" }}
-          />
+        {/* Tech strip */}
+        <motion.div className="mt-12 md:mt-14" {...fade(0.56)}>
+          <TechStrip />
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div className="mt-8 flex items-center gap-2 text-foreground-muted" {...fade(0.64)}>
+          <span className="label">Scroll</span>
+          <ArrowDown size={13} />
         </motion.div>
       </div>
     </section>
