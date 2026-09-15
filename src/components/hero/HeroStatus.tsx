@@ -1,9 +1,9 @@
 import { StatusDot } from "@/components/ui/StatusDot";
 
 const blocks = [
-  { label: "Current", lines: ["Building @ Pinn"] },
-  { label: "Focus", lines: ["AI Systems", "Architecture", "Product Engineering"] },
-  { label: "Location", lines: ["Brazil"] },
+  { label: "Atual", lines: ["Construindo @ Pinn"] },
+  { label: "Foco", lines: ["Sistemas de IA", "Arquitetura", "Engenharia de produto"] },
+  { label: "Local", lines: ["Brasil"] },
 ];
 
 export function HeroStatus() {
@@ -11,7 +11,7 @@ export function HeroStatus() {
     <aside className="w-full">
       <div className="mb-7 flex items-center gap-2">
         <StatusDot />
-        <span className="label text-accent">Active</span>
+        <span className="label text-accent">Ativo</span>
       </div>
       <div className="flex flex-col gap-7">
         {blocks.map((b) => (

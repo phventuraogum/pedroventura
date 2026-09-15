@@ -24,12 +24,12 @@ export function Hero() {
         {/* Meta row */}
         <motion.div className="flex items-start justify-between gap-4" {...fade(0)}>
           <div className="eyebrow flex-col items-start gap-1 before:hidden">
-            <span>AI Systems Architect</span>
+            <span>Arquiteto de Sistemas de IA</span>
             <span className="text-foreground-muted/70">CTO · Product Builder</span>
           </div>
           <span className="badge-available">
             <StatusDot />
-            Based in BR
+            Brasil
           </span>
         </motion.div>
 
@@ -42,13 +42,13 @@ export function Hero() {
               className="type-body-lg mt-7 max-w-[560px] text-foreground-secondary"
               {...fade(0.4)}
             >
-              I design and ship AI-native systems across software, data and
-              infrastructure, from business constraints to production.
+              Desenho e coloco no ar sistemas de IA nativos, entre software,
+              dados e infraestrutura, das restrições do negócio até a produção.
             </motion.p>
 
             <motion.div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4" {...fade(0.48)}>
               <a href="#systems" className="btn-primary group">
-                Explore systems
+                Ver sistemas
                 <ArrowDown size={16} className="transition-transform group-hover:translate-y-0.5" />
               </a>
               <a
@@ -84,7 +84,7 @@ export function Hero() {
 
         {/* Scroll indicator */}
         <motion.div className="mt-8 flex items-center gap-2 text-foreground-muted" {...fade(0.64)}>
-          <span className="label">Scroll</span>
+          <span className="label">Rolar</span>
           <ArrowDown size={13} />
         </motion.div>
       </div>

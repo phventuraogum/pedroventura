@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 
-const lines = ["BUILDING AI-NATIVE SYSTEMS", "FROM ARCHITECTURE", "TO PRODUCTION."];
+const lines = ["SISTEMAS DE IA NATIVOS,", "DA ARQUITETURA", "À PRODUÇÃO."];
 
 export function HeroHeadline() {
   const reduce = useReducedMotion();

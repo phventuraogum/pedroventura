@@ -3,9 +3,9 @@ import { Github } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const links = [
-  { to: "/#systems", label: "Systems" },
-  { to: "/#what-i-do", label: "Architecture" },
-  { to: "/#experience", label: "Experience" },
+  { to: "/#systems", label: "Sistemas" },
+  { to: "/#what-i-do", label: "Arquitetura" },
+  { to: "/#experience", label: "Experiência" },
   { to: "/#lab", label: "Lab" },
 ];
 
