@@ -29,7 +29,7 @@ export function Hero() {
           </div>
           <span className="badge-available">
             <StatusDot />
-            Available · BR
+            Based in BR
           </span>
         </motion.div>
 
