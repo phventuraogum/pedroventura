@@ -17,6 +17,7 @@ export interface SelectedSystem {
   status: string;                // "Sistema em produção"
   year: string;                  // "2026"
   caseSlug: string | null;
+  appliedPrinciples?: { index: string; label: string }[]; // princípios aplicados (para a página Architecture)
 }
 
 export const selectedSystems: SelectedSystem[] = [
@@ -37,6 +38,12 @@ export const selectedSystems: SelectedSystem[] = [
     status: "Em produção",
     year: "2026",
     caseSlug: "homologacao-mrv",
+    appliedPrinciples: [
+      { index: "03", label: "Regra antes da geração" },
+      { index: "04", label: "Tudo externo pode falhar" },
+      { index: "05", label: "Observabilidade" },
+      { index: "06", label: "Handoff humano" },
+    ],
   },
   {
     index: "02",
@@ -56,6 +63,11 @@ export const selectedSystems: SelectedSystem[] = [
     status: "Em produção",
     year: "2026",
     caseSlug: "erp-retifica",
+    appliedPrinciples: [
+      { index: "02", label: "Estado fora do modelo" },
+      { index: "04", label: "Tudo externo pode falhar" },
+      { index: "05", label: "Observabilidade" },
+    ],
   },
   {
     index: "03",
@@ -74,6 +86,11 @@ export const selectedSystems: SelectedSystem[] = [
     status: "Em produção",
     year: "2025",
     caseSlug: "integracao-saude-vtex",
+    appliedPrinciples: [
+      { index: "02", label: "Estado fora do modelo" },
+      { index: "04", label: "Tudo externo pode falhar" },
+      { index: "05", label: "Observabilidade" },
+    ],
   },
   {
     index: "04",
@@ -93,5 +110,11 @@ export const selectedSystems: SelectedSystem[] = [
     status: "Arquitetura entregue",
     year: "2025",
     caseSlug: "dados-ia-gestora",
+    appliedPrinciples: [
+      { index: "01", label: "IA é um componente" },
+      { index: "02", label: "Estado fora do modelo" },
+      { index: "03", label: "Regra antes da geração" },
+      { index: "06", label: "Handoff humano" },
+    ],
   },
 ];

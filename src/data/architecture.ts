@@ -215,7 +215,8 @@ export interface Tradeoff {
   left: string;
   right: string;
   position: number;
-  note: string;
+  scenario: string;
+  why: string;
 }
 
 export const architectureTradeoffs: Tradeoff[] = [
@@ -223,43 +224,50 @@ export const architectureTradeoffs: Tradeoff[] = [
     left: "Simples",
     right: "Flexível",
     position: 62,
-    note: "Flexibilidade custa complexidade. Vale quando o domínio muda de verdade, não pra prever um futuro que talvez não venha.",
+    scenario: "Domínio que muda de verdade, com requisitos novos toda semana.",
+    why: "Flexibilidade custa complexidade. Só vale quando a mudança é real, não pra prever um futuro que talvez não venha.",
   },
   {
     left: "Monolito",
     right: "Microserviços",
     position: 32,
-    note: "Microserviço resolve problema de organização e escala, não de código. Começar monolito modular quase sempre é mais barato.",
+    scenario: "Time pequeno, produto ainda encontrando forma.",
+    why: "Microserviço resolve problema de organização e escala, não de código. Monolito modular quase sempre é mais barato no início.",
   },
   {
     left: "Síncrono",
     right: "Assíncrono",
     position: 55,
-    note: "Escolha assíncrono quando resiliência, desacoplamento e throughput importam mais que consistência imediata e simplicidade.",
+    scenario: "Fluxo de alto throughput com integrações externas.",
+    why: "Desacoplamento e resiliência pesam mais que consistência imediata e simplicidade.",
   },
   {
     left: "Regras",
     right: "IA",
     position: 38,
-    note: "Decisão crítica fica em regra determinística. IA entra onde ambiguidade e linguagem natural pesam mais que exatidão.",
+    scenario: "Decisão com critério objetivo e consequência crítica.",
+    why: "Decisão crítica fica em regra determinística. IA entra onde ambiguidade e linguagem natural pesam mais que exatidão.",
   },
   {
     left: "Gerenciado",
     right: "Self-hosted",
     position: 40,
-    note: "Gerenciado compra velocidade e paz. Self-hosted vale quando custo em escala, dado sensível ou controle fino justificam a operação.",
+    scenario: "Começo de produto, sem dado ultra-sensível.",
+    why: "Gerenciado compra velocidade e paz. Self-hosted vale quando custo em escala, dado sensível ou controle fino justificam a operação.",
   },
   {
     left: "Centralizado",
     right: "Distribuído",
     position: 45,
-    note: "Distribuir adiciona modos de falha. Só quando escala, isolamento ou geografia exigem, não por moda.",
+    scenario: "Carga previsível, sem exigência de isolamento geográfico.",
+    why: "Distribuir adiciona modos de falha. Só quando escala, isolamento ou geografia exigem, não por moda.",
   },
   {
     left: "Menor custo",
     right: "Maior performance",
     position: 52,
-    note: "Performance tem preço. A pergunta é sempre quanto o negócio ganha com o próximo milissegundo.",
+    scenario: "Sistema onde latência afeta receita diretamente.",
+    why: "Performance tem preço. A pergunta é sempre quanto o negócio ganha com o próximo milissegundo.",
   },
 ];
 

@@ -15,11 +15,11 @@ export function ArchitectureDecisions() {
         <SectionHeader
           index="05"
           label="Architecture Decisions"
-          title="ADRs selecionados."
+          title="Decisions, not defaults."
         >
           <p className="section-subtitle">
-            Algumas das decisões de arquitetura que tomei, com contexto,
-            trade-off e resultado.
+            Architecture Decision Records selecionados: as decisões que tomei,
+            com contexto, trade-off e resultado.
           </p>
         </SectionHeader>
 

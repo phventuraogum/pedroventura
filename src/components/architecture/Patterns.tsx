@@ -15,12 +15,20 @@ export function Patterns() {
           title="Padrões testados, implementações reais."
         >
           <p className="section-subtitle">
-            Padrões que uso em sistemas de IA, aplicações corporativas e fluxos
-            de automação. Mesmos princípios, contextos diferentes.
+            O System Model aplicado. Mesmos princípios, formatos de sistema
+            diferentes: IA de conversa, conhecimento e aplicação corporativa.
           </p>
         </SectionHeader>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <Reveal>
+          <div className="mt-8 flex items-center gap-3 font-mono-jb text-[11px] uppercase tracking-wide text-foreground-muted">
+            <span>System Model</span>
+            <span className="text-accent">applied as</span>
+            <span>Patterns</span>
+          </div>
+        </Reveal>
+
+        <div className="mt-8 grid gap-6 lg:grid-cols-3">
           {architecturePatterns.map((p, i) => (
             <Reveal key={p.index} delay={i * 0.08}>
               <div className="flex h-full flex-col border border-border bg-surface-01/40 p-6">

@@ -10,32 +10,31 @@ const ICONS: Record<string, typeof Circle> = {
 export function Principles() {
   return (
     <section id="principles" className="section-divide">
-      <div className="container-wide py-20 md:py-28">
+      <div className="container-wide py-16 md:py-20">
         <SectionHeader
           index="02"
           label="Principles"
           title="Regras que uso ao desenhar sistemas."
         >
           <p className="section-subtitle">
-            Um conjunto de princípios que sigo ao projetar e construir software,
-            principalmente quando IA faz parte da solução.
+            Princípios que sigo ao projetar software, principalmente quando IA
+            faz parte da solução.
           </p>
         </SectionHeader>
 
-        <div className="mt-12 grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+        {/* Formato editorial: número | título | corpo, separados por hairline */}
+        <div className="mt-10 flex flex-col divide-y divide-border border-t border-border">
           {architecturePrinciples.map((p, i) => {
             const Icon = ICONS[p.icon] ?? Circle;
             return (
-              <Reveal key={p.index} delay={(i % 3) * 0.06}>
-                <div className="flex h-full flex-col bg-background p-6 md:p-7">
-                  <div className="flex items-center gap-3">
-                    <Icon size={18} className="text-accent" />
-                    <span className="mono-label">{p.index}</span>
-                  </div>
-                  <h3 className="mt-4 text-[15px] font-medium leading-snug text-foreground">
+              <Reveal key={p.index} delay={(i % 3) * 0.05}>
+                <div className="grid grid-cols-[auto_1fr] items-baseline gap-x-5 gap-y-2 py-6 md:grid-cols-[80px_minmax(0,340px)_1fr] md:gap-x-10">
+                  <span className="mono-label text-accent">{p.index}</span>
+                  <h3 className="flex items-start gap-2.5 text-[16px] font-medium leading-snug text-foreground">
+                    <Icon size={16} className="mt-0.5 shrink-0 text-foreground-muted" />
                     {p.title}
                   </h3>
-                  <p className="mt-2 text-[13px] leading-relaxed text-secondary">
+                  <p className="col-start-2 text-[13px] leading-relaxed text-secondary md:col-start-3">
                     {p.body}
                   </p>
                 </div>

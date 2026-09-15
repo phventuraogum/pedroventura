@@ -13,11 +13,11 @@ export function ProductionSystems() {
         <SectionHeader
           index="06"
           label="In Production"
-          title="Veja esses princípios em sistemas reais."
+          title="Onde esses princípios foram aplicados."
         >
           <p className="section-subtitle">
-            Case studies que aplicam esses padrões em produção. Do padrão ao
-            sistema real, ao case completo.
+            Não é a mesma lista da home. Aqui o foco é a ligação entre teoria e
+            execução: quais princípios cada sistema colocou em prática.
           </p>
         </SectionHeader>
 
@@ -34,13 +34,23 @@ export function ProductionSystems() {
                 </div>
                 <h3 className="mt-4 text-lg font-medium tracking-tight">{s.title}</h3>
                 <p className="mt-1.5 mono-label text-secondary">{s.org}</p>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {s.roles.map((r) => (
-                    <span key={r} className="chip">{r}</span>
-                  ))}
-                </div>
+
+                {s.appliedPrinciples && (
+                  <div className="mt-5">
+                    <p className="mono-label mb-2.5">Princípios aplicados</p>
+                    <ul className="flex flex-col gap-1.5">
+                      {s.appliedPrinciples.map((p) => (
+                        <li key={p.index} className="flex items-baseline gap-2.5 text-[13px] text-secondary">
+                          <span className="mono-label text-accent">{p.index}</span>
+                          {p.label}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
                 <span className="link-arrow mt-auto pt-6">
-                  Ver sistema
+                  Ver arquitetura
                   <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
                 </span>
               </Link>

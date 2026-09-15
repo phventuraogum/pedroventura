@@ -23,7 +23,18 @@ export function Tradeoffs() {
           </p>
         </SectionHeader>
 
-        <div className="mt-12 flex flex-col divide-y divide-border border-y border-border">
+        <Reveal>
+          <div className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-1 border-l-2 border-accent pl-4">
+            <span className="font-mono-jb text-[11px] uppercase tracking-wide text-foreground">
+              No default position.
+            </span>
+            <span className="font-mono-jb text-[11px] uppercase tracking-wide text-foreground-muted">
+              O contexto move a arquitetura.
+            </span>
+          </div>
+        </Reveal>
+
+        <div className="mt-8 flex flex-col divide-y divide-border border-y border-border">
           {architectureTradeoffs.map((t, i) => {
             const isOpen = open === i;
             return (
@@ -55,9 +66,12 @@ export function Tradeoffs() {
                       transition={{ duration: 0.26, ease: [0.2, 0.8, 0.2, 1] }}
                       className="overflow-hidden"
                     >
-                      <p className="max-w-2xl pb-5 text-[13px] leading-relaxed text-secondary">
-                        {t.note}
-                      </p>
+                      <div className="max-w-2xl pb-5">
+                        <p className="mono-label mb-1.5">Cenário</p>
+                        <p className="text-[13px] leading-relaxed text-foreground">{t.scenario}</p>
+                        <p className="mono-label mb-1.5 mt-4">Por quê</p>
+                        <p className="text-[13px] leading-relaxed text-secondary">{t.why}</p>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
