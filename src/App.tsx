@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Projetos from "./pages/Projetos";
 import ProjetoDetalhe from "./pages/ProjetoDetalhe";
 import CaseStudy from "./pages/CaseStudy";
+import Architecture from "./pages/Architecture";
 import Stack from "./pages/Stack";
 import Arquiteturas from "./pages/Arquiteturas";
 import Contato from "./pages/Contato";
@@ -34,6 +35,7 @@ function AnimatedRoutes() {
         <Route path="/projetos" element={<Projetos />} />
         <Route path="/projetos/:slug" element={<ProjetoDetalhe />} />
         <Route path="/systems/:slug" element={<CaseStudy />} />
+        <Route path="/architecture" element={<Architecture />} />
         <Route path="/stack" element={<Stack />} />
         <Route path="/arquiteturas" element={<Arquiteturas />} />
         <Route path="/certificacoes" element={<Certificacoes />} />

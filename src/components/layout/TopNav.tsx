@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const links = [
   { to: "/#systems", label: "Sistemas" },
-  { to: "/#what-i-do", label: "Arquitetura" },
+  { to: "/architecture", label: "Arquitetura" },
   { to: "/#experience", label: "Experiência" },
   { to: "/#lab", label: "Lab" },
 ];
@@ -34,15 +34,25 @@ export function TopNav() {
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
-          {links.map((l) => (
-            <a
-              key={l.to}
-              href={l.to}
-              className="font-mono-jb text-[13px] text-foreground-secondary transition-colors hover:text-foreground"
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) =>
+            l.to.includes("#") ? (
+              <a
+                key={l.to}
+                href={l.to}
+                className="font-mono-jb text-[13px] text-foreground-secondary transition-colors hover:text-foreground"
+              >
+                {l.label}
+              </a>
+            ) : (
+              <Link
+                key={l.to}
+                to={l.to}
+                className="font-mono-jb text-[13px] text-foreground-secondary transition-colors hover:text-foreground"
+              >
+                {l.label}
+              </Link>
+            )
+          )}
         </div>
 
         <a
