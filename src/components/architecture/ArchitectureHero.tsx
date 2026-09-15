@@ -57,7 +57,7 @@ export function ArchitectureHero() {
         {/* Direita: diagrama de camadas + mensagem */}
         <div className="flex flex-col justify-center gap-10">
           <div className="relative">
-            <span className="mono-label absolute -top-1 left-0">Business problem</span>
+            <span className="mono-label absolute -top-1 left-0">Problema de negócio</span>
             <div className="mt-8 flex flex-col gap-2.5">
               {layers.map((l, i) => (
                 <motion.div
@@ -81,7 +81,7 @@ export function ArchitectureHero() {
                 </motion.div>
               ))}
             </div>
-            <span className="mono-label absolute -bottom-6 left-0">Production</span>
+            <span className="mono-label absolute -bottom-6 left-0">Produção</span>
           </div>
 
           <motion.div className="mt-4 max-w-sm" {...enter(0.5)}>

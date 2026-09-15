@@ -31,8 +31,8 @@ export default function Architecture() {
         <div className="container-wide py-16 md:py-24">
           <div className="flex flex-col items-start justify-between gap-6 border-l-2 border-accent pl-6 md:flex-row md:items-center">
             <div>
-              <p className="mono-label mb-3">Let's build</p>
-              <h2 className="type-h2">Build something difficult.</h2>
+              <p className="mono-label mb-3">Vamos construir</p>
+              <h2 className="type-h2">Vamos construir algo difícil.</h2>
               <p className="section-subtitle mt-3">
                 Problemas complexos merecem sistemas bem arquitetados.
               </p>

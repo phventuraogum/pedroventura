@@ -25,7 +25,7 @@ export default function Experience() {
         <div className="container-wide py-16 md:py-24">
           <div className="max-w-2xl border-l-2 border-accent pl-6">
             <p className="mono-label mb-3">05 / Ainda construo</p>
-            <h2 className="type-h2">I still build.</h2>
+            <h2 className="type-h2">Ainda coloco a mão no código.</h2>
             <p className="section-subtitle mt-4 text-[1.05rem]">
               Arquitetura e liderança não me tiraram do código. Sigo mão na
               massa em backend, APIs, IA, dados e infraestrutura. Meu diferencial

@@ -25,7 +25,6 @@ export function Hero() {
         <motion.div className="flex items-start justify-between gap-4" {...fade(0)}>
           <div className="eyebrow flex-col items-start gap-1 before:hidden">
             <span>Arquiteto de Sistemas de IA</span>
-            <span className="text-foreground-muted/70">CTO · Product Builder</span>
           </div>
           <span className="badge-available">
             <StatusDot />

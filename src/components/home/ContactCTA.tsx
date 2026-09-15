@@ -15,8 +15,8 @@ export function ContactCTA() {
         <div className="mt-8 flex flex-col justify-between gap-10 border-l-2 border-accent pl-6 lg:flex-row lg:items-end">
           <Reveal>
             <div>
-              <p className="mono-label mb-3">Let's build</p>
-              <h2 className="type-h2 max-w-2xl">Build something difficult.</h2>
+              <p className="mono-label mb-3">Vamos construir</p>
+              <h2 className="type-h2 max-w-2xl">Vamos construir algo difícil.</h2>
               <p className="section-subtitle mt-4 text-[1.05rem]">
                 Problema complexo merece sistema bem arquitetado. Me conta o que
                 você quer tirar do papel.

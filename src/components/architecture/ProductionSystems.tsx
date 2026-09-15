@@ -12,7 +12,7 @@ export function ProductionSystems() {
       <div className="container-wide py-20 md:py-28">
         <SectionHeader
           index="06"
-          label="In Production"
+          label="Em produção"
           title="Onde esses princípios foram aplicados."
         >
           <p className="section-subtitle">

@@ -8,12 +8,12 @@ export function Footer() {
       <div className="container-wide py-10">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <Link to="/" className="text-lg font-medium tracking-tight">
-              PV<span className="text-accent">.</span>
+            <Link to="/" className="flex items-center" aria-label="Pedro Ventura, início">
+              <img src="/favicon-512.png" alt="Pedro Ventura" width={32} height={32} className="h-8 w-8 rounded-md" />
             </Link>
             <p className="mt-3 max-w-xs text-[13px] leading-relaxed text-foreground-muted">
-              Pedro Ventura, AI Systems Architect. Da restrição de negócio ao
-              sistema em produção.
+              Pedro Ventura, Arquiteto de Sistemas de IA. Da restrição de
+              negócio ao sistema em produção.
             </p>
           </div>
 

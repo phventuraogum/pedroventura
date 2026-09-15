@@ -8,7 +8,7 @@ export function HowIOperate() {
       <div className="container-wide py-16 md:py-24">
         <SectionHeader
           index="04"
-          label="How I Operate"
+          label="Como eu opero"
           title="Do problema de negócio à operação em produção."
         />
 

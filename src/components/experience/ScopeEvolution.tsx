@@ -8,7 +8,7 @@ export function ScopeEvolution() {
       <div className="container-wide py-16 md:py-24">
         <SectionHeader
           index="03"
-          label="Scope Evolution"
+          label="Evolução de escopo"
           title="Mudou a responsabilidade, não só a senioridade."
         >
           <p className="section-subtitle">

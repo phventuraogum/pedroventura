@@ -2,7 +2,7 @@
  * HeroArchitecture — elemento de arquitetura extremamente sutil no fundo.
  * Fica atrás do painel direito, opacity baixa, não compete com a headline.
  */
-const layers = ["BUSINESS", "SYSTEM", "AI · DATA · INFRA"];
+const layers = ["NEGÓCIO", "SISTEMA", "IA · DADOS · INFRA"];
 
 export function HeroArchitecture() {
   return (

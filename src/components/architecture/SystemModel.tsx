@@ -35,11 +35,11 @@ export function SystemModel() {
         <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_180px] lg:gap-10">
           {/* Coluna principal: fluxo + camadas */}
           <div>
-            <FlowLabel>Business constraints</FlowLabel>
+            <FlowLabel>Restrições de negócio</FlowLabel>
             <div className="flex justify-center py-1" aria-hidden="true">
               <ArrowDown size={15} className="text-accent" />
             </div>
-            <FlowLabel>Domain model</FlowLabel>
+            <FlowLabel>Modelo de domínio</FlowLabel>
             <div className="flex justify-center py-1" aria-hidden="true">
               <ArrowDown size={15} className="text-accent" />
             </div>
@@ -60,7 +60,7 @@ export function SystemModel() {
             <div className="flex justify-center py-1" aria-hidden="true">
               <ArrowDown size={15} className="text-accent" />
             </div>
-            <FlowLabel>Production</FlowLabel>
+            <FlowLabel>Produção</FlowLabel>
           </div>
 
           {/* Coluna lateral: cross-cutting concerns */}

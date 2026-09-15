@@ -37,7 +37,7 @@ export function AskPedro() {
       <div className="container-wide py-20 md:py-28">
         <SectionHeader
           index="07"
-          label="Ask Pedro"
+          label="Pergunte ao Pedro"
           title="Pergunte sobre minha arquitetura, projetos ou experiência."
         />
 

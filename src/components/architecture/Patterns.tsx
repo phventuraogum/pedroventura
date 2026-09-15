@@ -11,7 +11,7 @@ export function Patterns() {
       <div className="container-wide py-20 md:py-28">
         <SectionHeader
           index="03"
-          label="Architecture Patterns"
+          label="Padrões de arquitetura"
           title="Padrões testados, implementações reais."
         >
           <p className="section-subtitle">
@@ -23,8 +23,8 @@ export function Patterns() {
         <Reveal>
           <div className="mt-8 flex items-center gap-3 font-mono-jb text-[11px] uppercase tracking-wide text-foreground-muted">
             <span>System Model</span>
-            <span className="text-accent">applied as</span>
-            <span>Patterns</span>
+            <span className="text-accent">aplicado como</span>
+            <span>Padrões</span>
           </div>
         </Reveal>
 

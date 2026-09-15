@@ -92,7 +92,7 @@ export default function CaseStudy() {
             <div className="flex items-center gap-3 mono-label">
               <span className="text-accent">01</span>
               <span className="h-px w-8 bg-border" />
-              <span>Case study</span>
+              <span>Case</span>
             </div>
           </Reveal>
           <Reveal delay={0.06}>
@@ -275,7 +275,7 @@ export default function CaseStudy() {
         <div className="flex flex-col items-start justify-between gap-6 border-l-2 border-accent pl-6 md:flex-row md:items-center">
           <div>
             <p className="mono-label mb-3">Vamos construir</p>
-            <h2 className="type-h2">Build something difficult.</h2>
+            <h2 className="type-h2">Vamos construir algo difícil.</h2>
           </div>
           <Link to="/contato" className="btn-primary group shrink-0">
             Falar comigo

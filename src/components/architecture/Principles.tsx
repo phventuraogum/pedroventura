@@ -13,7 +13,7 @@ export function Principles() {
       <div className="container-wide py-16 md:py-20">
         <SectionHeader
           index="02"
-          label="Principles"
+          label="Princípios"
           title="Regras que uso ao desenhar sistemas."
         >
           <p className="section-subtitle">

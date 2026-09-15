@@ -14,8 +14,8 @@ export function ArchitectureDecisions() {
       <div className="container-wide py-20 md:py-28">
         <SectionHeader
           index="05"
-          label="Architecture Decisions"
-          title="Decisions, not defaults."
+          label="Decisões de arquitetura"
+          title="Decisões, não defaults."
         >
           <p className="section-subtitle">
             Architecture Decision Records selecionados: as decisões que tomei,

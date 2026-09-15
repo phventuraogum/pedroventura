@@ -8,7 +8,7 @@ export function ExperienceTimeline() {
   return (
     <section className="section-divide">
       <div className="container-wide py-16 md:py-24">
-        <SectionHeader index="02" label="Timeline" title="Escopo, não cargo." />
+        <SectionHeader index="02" label="Linha do tempo" title="Escopo, não cargo." />
 
         <div className="mt-12 flex flex-col divide-y divide-border border-t border-border">
           {experiencePhases.map((p, i) => (

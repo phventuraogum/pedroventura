@@ -29,8 +29,14 @@ export function TopNav() {
       }
     >
       <nav className="container-wide flex h-[72px] items-center justify-between">
-        <Link to="/" className="text-lg font-medium tracking-tight">
-          PV<span className="text-accent">.</span>
+        <Link to="/" className="flex items-center" aria-label="Pedro Ventura, início">
+          <img
+            src="/favicon-512.png"
+            alt="Pedro Ventura"
+            width={32}
+            height={32}
+            className="h-8 w-8 rounded-md"
+          />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
