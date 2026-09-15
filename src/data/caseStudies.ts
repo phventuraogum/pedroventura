@@ -8,6 +8,8 @@ export interface CaseStudy {
   kind: string;
   title: string;
   org: string;
+  year: string;
+  status: string;
   summary: string;
   context: string;
   challenge: string;
@@ -26,6 +28,8 @@ export const caseStudies: CaseStudy[] = [
     kind: "Homologação com IA",
     title: "Homologação de negócio automatizada",
     org: "MRV",
+    year: "2026",
+    status: "Em produção",
     summary:
       "Agentes de IA entram nos sistemas, executam o cenário como o usuário faria, conferem o resultado contra o critério de aceite e abrem card com evidência quando algo falha.",
     context:
@@ -90,6 +94,8 @@ export const caseStudies: CaseStudy[] = [
     kind: "ERP em produção",
     title: "ERP completo para retífica",
     org: "Favarini · Retífica Formiguense",
+    year: "2026",
+    status: "Em produção",
     summary:
       "O miolo da operação num sistema só: PCP, compras, estoque, financeiro, fiscal, comissões e ponto, com IA embarcada. Rodando em produção, com quatro CNPJs.",
     context:
@@ -153,6 +159,8 @@ export const caseStudies: CaseStudy[] = [
     kind: "Integração em saúde",
     title: "Integração e dados sobre VTEX",
     org: "Grupo de saúde (Fleury · Hermes Pardini)",
+    year: "2025",
+    status: "Em produção",
     summary:
       "Camada de integração que faz cada evento contar exatamente uma vez, com trilha de auditoria completa. Idempotência, reprocesso seguro e base analítica estável.",
     context:
@@ -217,6 +225,8 @@ export const caseStudies: CaseStudy[] = [
     kind: "Arquitetura de dados e IA",
     title: "Base de dados e IA para gestora",
     org: "Gestora de investimentos regulada",
+    year: "2025",
+    status: "Arquitetura entregue",
     summary:
       "Arquitetura back-end primeiro: uma fonte única normalizada alimentando os apps existentes, com RAG citado, zonas de dado por sensibilidade e governança para ambiente regulado.",
     context:
@@ -278,4 +288,11 @@ export const caseStudies: CaseStudy[] = [
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return caseStudies.find((c) => c.slug === slug);
+}
+
+/** Próximo case na ordem (circular), para a seção "Próximo sistema". */
+export function getNextCaseStudy(slug: string): CaseStudy | undefined {
+  const i = caseStudies.findIndex((c) => c.slug === slug);
+  if (i === -1) return undefined;
+  return caseStudies[(i + 1) % caseStudies.length];
 }

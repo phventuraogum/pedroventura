@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
-import { getCaseStudy } from "@/data/caseStudies";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { getCaseStudy, getNextCaseStudy } from "@/data/caseStudies";
 import { ArchitectureFlow } from "@/components/ArchitectureFlow";
 import { Reveal } from "@/components/Reveal";
 
@@ -17,8 +17,8 @@ function Block({
     <section className="section-divide py-12 md:py-16">
       <div className="grid gap-8 md:grid-cols-[200px_1fr]">
         <Reveal>
-          <div className="flex items-start gap-3 mono-label md:flex-col md:gap-2">
-            <span className="text-brand">{index}</span>
+          <div className="flex items-center gap-3 mono-label md:flex-col md:items-start md:gap-2">
+            <span className="text-accent">{index}</span>
             <span>{label}</span>
           </div>
         </Reveal>
@@ -33,63 +33,82 @@ function Block({
 export default function CaseStudy() {
   const { slug } = useParams();
   const study = slug ? getCaseStudy(slug) : undefined;
+  const next = slug ? getNextCaseStudy(slug) : undefined;
 
   if (!study) {
     return (
       <div className="container-wide py-32">
         <p className="mono-label">Case não encontrado</p>
-        <Link to="/" className="link-arrow mt-4">
-          <ArrowLeft size={15} /> Voltar pro início
+        <Link to="/#systems" className="link-arrow mt-4">
+          <ArrowLeft size={15} /> Voltar pros sistemas
         </Link>
       </div>
     );
   }
 
   return (
-    <article className="container-wide py-16 md:py-24">
-      {/* Header */}
+    <article className="container-wide py-14 md:py-20">
       <Reveal>
-        <Link to="/#systems" className="link-arrow mb-10">
+        <Link to="/#systems" className="link-arrow mb-12">
           <ArrowLeft size={15} /> Sistemas selecionados
         </Link>
       </Reveal>
-      <Reveal delay={0.05}>
-        <p className="eyebrow">{study.kind}</p>
-      </Reveal>
-      <Reveal delay={0.08}>
-        <p className="mono-label mt-4 text-secondary">{study.org}</p>
-      </Reveal>
-      <Reveal delay={0.1}>
-        <h1 className="section-title mt-3 max-w-3xl text-[2.4rem] md:text-[3.4rem]">
-          {study.title}
-        </h1>
-      </Reveal>
-      <Reveal delay={0.15}>
-        <p className="section-subtitle mt-6 text-[1.05rem]">{study.summary}</p>
-      </Reveal>
 
-      <Block index="01" label="Contexto">
+      {/* 01 / OVERVIEW */}
+      <section>
+        <Reveal>
+          <div className="flex items-center gap-3 mono-label">
+            <span className="text-accent">01</span>
+            <span className="h-px w-8 bg-border" />
+            <span>Overview</span>
+          </div>
+        </Reveal>
+        <Reveal delay={0.06}>
+          <p className="mono-label mt-6 text-secondary">{study.org}</p>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <h1 className="type-h2 mt-2 max-w-3xl">{study.title}</h1>
+        </Reveal>
+        <Reveal delay={0.14}>
+          <p className="section-subtitle mt-5 text-[1.05rem]">{study.summary}</p>
+        </Reveal>
+        <Reveal delay={0.18}>
+          <dl className="mt-9 grid grid-cols-2 gap-6 border-t border-border pt-7 sm:grid-cols-3">
+            <div>
+              <dt className="mono-label mb-2">Ano</dt>
+              <dd className="text-[15px] text-foreground">{study.year}</dd>
+            </div>
+            <div>
+              <dt className="mono-label mb-2">Papel</dt>
+              <dd className="text-[15px] leading-relaxed text-foreground">
+                {study.roles.join(" · ")}
+              </dd>
+            </div>
+            <div>
+              <dt className="mono-label mb-2">Status</dt>
+              <dd className="text-[15px] text-foreground">{study.status}</dd>
+            </div>
+          </dl>
+        </Reveal>
+      </section>
+
+      {/* 02 / CONTEXT */}
+      <Block index="02" label="Contexto">
         <p className="max-w-2xl text-[0.98rem] leading-relaxed text-secondary">
           {study.context}
         </p>
       </Block>
 
-      <Block index="02" label="Desafio">
+      {/* 03 / CHALLENGE */}
+      <Block index="03" label="Desafio">
         <p className="max-w-2xl text-[0.98rem] leading-relaxed text-secondary">
           {study.challenge}
         </p>
       </Block>
 
-      <Block index="03" label="Meu papel">
-        <div className="flex flex-wrap gap-2">
-          {study.roles.map((r) => (
-            <span key={r} className="chip">{r}</span>
-          ))}
-        </div>
-      </Block>
-
+      {/* 04 / SYSTEM ARCHITECTURE */}
       <Block index="04" label="Arquitetura">
-        <div className="max-w-md">
+        <div className="max-w-lg">
           <ArchitectureFlow layers={study.systemLayers} />
         </div>
         {study.systemNote && (
@@ -99,6 +118,7 @@ export default function CaseStudy() {
         )}
       </Block>
 
+      {/* 05 / KEY DECISIONS */}
       <Block index="05" label="Decisões-chave">
         <div className="grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2">
           {study.keyDecisions.map((d) => (
@@ -112,17 +132,19 @@ export default function CaseStudy() {
         </div>
       </Block>
 
+      {/* 06 / PRODUCTION */}
       <Block index="06" label="Produção">
         <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
           {study.production.map((p) => (
             <li key={p} className="flex items-start gap-3 text-sm text-secondary">
-              <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand" />
+              <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent" />
               {p}
             </li>
           ))}
         </ul>
       </Block>
 
+      {/* 07 / IMPACT */}
       <Block index="07" label="Impacto">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
           {study.impact.map((m) => (
@@ -136,6 +158,7 @@ export default function CaseStudy() {
         </div>
       </Block>
 
+      {/* 08 / STACK */}
       <Block index="08" label="Stack">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {study.stack.map((g) => (
@@ -151,11 +174,30 @@ export default function CaseStudy() {
         </div>
       </Block>
 
-      <div className="section-divide pt-12">
-        <Link to="/#systems" className="link-arrow">
-          <ArrowLeft size={15} /> Voltar pros sistemas selecionados
-        </Link>
-      </div>
+      {/* 09 / NEXT SYSTEM */}
+      {next && (
+        <section className="section-divide py-12 md:py-16">
+          <div className="grid gap-8 md:grid-cols-[200px_1fr]">
+            <div className="flex items-center gap-3 mono-label md:flex-col md:items-start md:gap-2">
+              <span className="text-accent">09</span>
+              <span>Próximo sistema</span>
+            </div>
+            <Link to={`/systems/${next.slug}`} className="group block">
+              <p className="mono-label text-secondary">{next.org}</p>
+              <div className="mt-2 flex items-center justify-between gap-4">
+                <h2 className="type-h3">{next.title}</h2>
+                <ArrowRight
+                  size={22}
+                  className="shrink-0 text-accent transition-transform group-hover:translate-x-1"
+                />
+              </div>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-secondary">
+                {next.summary}
+              </p>
+            </Link>
+          </div>
+        </section>
+      )}
     </article>
   );
 }
