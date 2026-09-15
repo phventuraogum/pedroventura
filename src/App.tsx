@@ -6,18 +6,19 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { TopNav } from "@/components/layout/TopNav";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/hooks/useTheme";
+import { lazy, Suspense, useEffect } from "react";
 import Home from "./pages/Home";
-import Projetos from "./pages/Projetos";
-import ProjetoDetalhe from "./pages/ProjetoDetalhe";
-import CaseStudy from "./pages/CaseStudy";
-import Architecture from "./pages/Architecture";
-import Experience from "./pages/Experience";
-import Stack from "./pages/Stack";
-import Arquiteturas from "./pages/Arquiteturas";
-import Contato from "./pages/Contato";
-import Certificacoes from "./pages/Certificacoes";
-import NotFound from "./pages/NotFound";
-import { useEffect } from "react";
+
+const Projetos = lazy(() => import("./pages/Projetos"));
+const ProjetoDetalhe = lazy(() => import("./pages/ProjetoDetalhe"));
+const CaseStudy = lazy(() => import("./pages/CaseStudy"));
+const Architecture = lazy(() => import("./pages/Architecture"));
+const Experience = lazy(() => import("./pages/Experience"));
+const Stack = lazy(() => import("./pages/Stack"));
+const Arquiteturas = lazy(() => import("./pages/Arquiteturas"));
+const Contato = lazy(() => import("./pages/Contato"));
+const Certificacoes = lazy(() => import("./pages/Certificacoes"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ function ScrollToTop() {
 function AnimatedRoutes() {
   const location = useLocation();
   return (
+    <Suspense fallback={<div className="container-wide py-32" />}>
     <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/trabalhos" element={<Projetos />} />
@@ -44,6 +46,7 @@ function AnimatedRoutes() {
         <Route path="/contato" element={<Contato />} />
         <Route path="*" element={<NotFound />} />
     </Routes>
+    </Suspense>
   );
 }
 
