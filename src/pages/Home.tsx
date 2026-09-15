@@ -1,7 +1,8 @@
 import { Hero } from "@/components/home/Hero";
-import { WhatIDo } from "@/components/home/WhatIDo";
 import { SelectedSystems } from "@/components/home/SelectedSystems";
-import { Skills } from "@/components/home/Skills";
+import { WhatIDo } from "@/components/home/WhatIDo";
+import { Lab } from "@/components/home/Lab";
+import { AskPedro } from "@/components/home/AskPedro";
 import { ContactCTA } from "@/components/home/ContactCTA";
 
 export default function Home() {
@@ -10,7 +11,8 @@ export default function Home() {
       <Hero />
       <SelectedSystems />
       <WhatIDo />
-      <Skills />
+      <Lab />
+      <AskPedro />
       <ContactCTA />
     </main>
   );

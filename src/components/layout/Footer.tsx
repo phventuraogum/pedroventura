@@ -1,48 +1,52 @@
-import { Github, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-20 border-t border-border">
-      <div className="container-page flex flex-col items-center justify-between gap-4 py-8 sm:flex-row">
-        <div>
-          <p className="text-sm font-medium">Pedro Ventura</p>
-          <p className="mt-0.5 text-xs text-muted">
-            © {year} · sistemas que vão pra produção
-          </p>
+    <footer className="section-divide mt-0">
+      <div className="container-wide py-10">
+        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <div>
+            <Link to="/" className="text-lg font-medium tracking-tight">
+              PV<span className="text-accent">.</span>
+            </Link>
+            <p className="mt-3 max-w-xs text-[13px] leading-relaxed text-foreground-muted">
+              Pedro Ventura, AI Systems Architect. Da restrição de negócio ao
+              sistema em produção.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <a
+              href="https://github.com/phventuraogum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono-jb text-[12px] text-foreground-secondary transition-colors hover:text-foreground"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/phventura/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono-jb text-[12px] text-foreground-secondary transition-colors hover:text-foreground"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="mailto:passisventura@gmail.com"
+              className="font-mono-jb text-[12px] text-foreground-secondary transition-colors hover:text-foreground"
+            >
+              Email
+            </a>
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2">
-          <a
-            href="https://github.com/phventuraogum"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-border px-3 text-xs text-secondary transition-colors hover:border-foreground/30 hover:text-foreground"
-          >
-            <Github size={14} /> pessoal
-          </a>
-          <a
-            href="https://github.com/pinn-product-builder"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-border px-3 text-xs text-secondary transition-colors hover:border-foreground/30 hover:text-foreground"
-          >
-            <Github size={14} /> Pinn
-          </a>
-          <a
-            href="https://www.linkedin.com/in/phventura/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-secondary transition-colors hover:border-foreground/30 hover:text-foreground"
-          >
-            <Linkedin size={16} />
-          </a>
-          <Link to="/contato" className="btn-ghost !px-3 !py-1.5 text-xs">
-            Falar comigo
-          </Link>
+        <div className="mt-8 border-t border-border pt-6">
+          <p className="font-mono-jb text-[11px] text-foreground-muted">
+            © {year} Pedro Ventura
+          </p>
         </div>
       </div>
     </footer>

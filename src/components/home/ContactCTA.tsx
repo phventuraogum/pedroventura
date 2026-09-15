@@ -1,25 +1,59 @@
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
 export function ContactCTA() {
   return (
-    <section className="border-t border-border">
-      <div className="container-page py-20 text-center md:py-28">
+    <section id="contact" className="section-divide">
+      <div className="container-wide py-20 md:py-28">
         <Reveal>
-          <h2 className="section-title mx-auto max-w-2xl">
-            Tem um sistema pra tirar do papel?
-          </h2>
-          <p className="section-subtitle mx-auto mt-4">
-            Me conta o problema. Se eu puder resolver, você recebe um plano de
-            ataque, não um pitch de vendas.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <Link to="/contato" className="btn-primary">
-              Falar comigo <ArrowRight size={16} />
-            </Link>
+          <div className="flex items-center gap-3 mono-label">
+            <span className="text-accent">08</span>
+            <span>Contact</span>
           </div>
         </Reveal>
+
+        <div className="mt-8 flex flex-col justify-between gap-10 border-l-2 border-accent pl-6 lg:flex-row lg:items-end">
+          <Reveal>
+            <div>
+              <p className="mono-label mb-3">Let's build</p>
+              <h2 className="type-h2 max-w-2xl">Build something difficult.</h2>
+              <p className="section-subtitle mt-4 text-[1.05rem]">
+                Problema complexo merece sistema bem arquitetado. Me conta o que
+                você quer tirar do papel.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.08}>
+            <div className="flex flex-col gap-3">
+              <a
+                href="mailto:passisventura@gmail.com"
+                className="link-arrow group"
+              >
+                <Mail size={15} /> Email
+                <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <a
+                href="https://github.com/phventuraogum"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-arrow group"
+              >
+                <Github size={15} /> GitHub
+                <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/phventura/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-arrow group"
+              >
+                <Linkedin size={15} /> LinkedIn
+                <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
